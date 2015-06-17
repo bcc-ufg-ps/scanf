@@ -18,9 +18,7 @@ import javax.persistence.TemporalType;
     @NamedQuery(name = Disciplina.OBTER_DISCIPLINAS_POR_NOME_OU_PROF, query = "select d from Disciplina d where d.aluno.id = :idAluno and (d.nome like :texto or d.professor like :texto) order by d.dataCadastramento desc")
 })
 public class Disciplina implements Serializable {
-
     public static enum Situacao {
-
         NORMAL, ALERTA, GRAVE
     }
     public static final double NOTA_MAXIMA = 10.0;

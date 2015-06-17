@@ -9,7 +9,21 @@
             <b:container>
                 <b:panel>
                     <f:facet name="heading">
-                        <b:commandButton value="Nova disciplina" action="novaDisciplina" look="primary" icon="plus"/>
+                        <b:row>
+                            <b:column span="12">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Pesquisar por nome da disciplina ou do professor..."/>
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="button">Buscar</button>
+                                    </span>
+                                </div><!-- /input-group -->
+                            </b:column>
+                        </b:row>
+                    </f:facet>
+                    <f:facet name="footer">
+                        <a data-toggle="modal" href="#novaDisciplina">
+                            <b:commandButton value="Nova disciplina" look="primary" icon="ok"/>
+                        </a>
                     </f:facet>
                     <ui:include src="/WEB-INF/mensagens.xhtml"/>
                     <ui:include src="/WEB-INF/listaDisciplinas.xhtml">
@@ -17,6 +31,25 @@
                     </ui:include>
                 </b:panel>
             </b:container>
+
+            <!-- Modal cadastro de disciplina -->
+            <div class="modal fade" id="novaDisciplina" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"></span></button>
+                            <h4 class="modal-title" id="myModalLabel">Nova Disciplina</h4>
+                        </div>
+                        <div class="modal-body">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Sair</button>
+                        </div>
+                    </div>
+                </div>
+            </div>          
+
+
         </h:form>
     </ui:define>
 </ui:composition>
