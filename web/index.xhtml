@@ -12,10 +12,10 @@
                         <b:panel look="primary">
                             <f:facet name="heading">
                                 <span class="glyphicon glyphicon-user"></span>
-                                Não conhece SCANF ainda? Então cadastre agora...
+                                Não conhece SCANF ainda? Você pode resolver isso agora...
                             </f:facet>
                             <f:facet name="footer">
-                                <b:commandButton value="Cadastrar" look="primary" icon="ok" action="#{bmusica.salvarArtistaApenas}"/>
+                                <b:commandButton value="Cadastrar" look="primary" icon="ok"/>
                             </f:facet>
                             <b:row styleClass="show-grid">
                                 <b:column span="12" styleClass="show-grid">
@@ -24,7 +24,7 @@
                             <b:row styleClass="show-grid">
                                 <b:column span="12" styleClass="show-grid">
                                     <h:outputLabel value="Nome"/>
-                                    <b:inputText placeholder="Nome do usuário" 
+                                    <b:inputText placeholder="Informe seu nome" 
                                                  value="#{bmusica.novoArtista.nome}" 
                                                  required="true" 
                                                  requiredMessage="O campo 'Nome' é obrigatório!"/>
@@ -33,7 +33,7 @@
                             <b:row styleClass="show-grid">
                                 <b:column span="12" styleClass="show-grid">
                                     <h:outputLabel value="Email"/>
-                                    <b:inputText placeholder="Email do usuário" 
+                                    <b:inputText placeholder="Informe seu email" 
                                                  value="#{bmusica.novoArtista.linkSobre}" 
                                                  required="true" 
                                                  requiredMessage="O campo 'Email' é obrigatório!"/>
@@ -45,7 +45,7 @@
                                     <b:inputText placeholder="Informe sua senha" 
                                                  value="#{bmusica.novoArtista.linkSobre}" 
                                                  required="true" 
-                                                 requiredMessage="O campo 'Email' é obrigatório!"/>
+                                                 requiredMessage="O campo 'Senha' é obrigatório!"/>
                                 </b:column>
                             </b:row>
                             <b:row styleClass="show-grid">
@@ -54,7 +54,7 @@
                                     <b:inputText placeholder="Confirme sua senha" 
                                                  value="#{bmusica.novoArtista.linkSobre}" 
                                                  required="true" 
-                                                 requiredMessage="O campo 'Email' é obrigatório!"/>
+                                                 requiredMessage="O campo 'Confirmar senha' é obrigatório!"/>
                                 </b:column>
                             </b:row>
                         </b:panel>
@@ -65,8 +65,10 @@
                                 <span class="glyphicon glyphicon-education"></span>
                                 SCANF | Sistema para Controle Acadêmico de Notas e Frequências 
                             </f:facet>
+                            <p><b><i>If you can't measure it, you can't manage it.<br/>(Peter Drucker)</i></b></p>
+                            <hr/>
                             <p>SCANF tem como objetivo permitir que alunos controlem suas notas e sua frequência nas disciplinas cursadas por eles. A ideia é que o sistema ajude o aluno a se organizar e planejar melhor sua participação nas disciplinas, evitando que surpresas desagradáveis aconteçam, como a reprovação por frequência em uma disciplina ou a necessidade de se obter um rendimento muito alto nas últimas avaliações da disciplina.</p>
-                            <b:commandButton value="Saiba mais #187;" look="Default" action="#{bmusica.salvarArtistaApenas}"/>
+                            <b:commandButton value="Saiba mais &#187;" look="Default" action="#{bmusica.salvarArtistaApenas}"/>
 
                         </b:panel>
                     </b:column>
