@@ -1,0 +1,46 @@
+<ui:fragment xmlns="http://www.w3.org/1999/xhtml"
+             xmlns:h="http://xmlns.jcp.org/jsf/html"
+             xmlns:ui="http://java.sun.com/jsf/facelets"
+             xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Disciplina</th>
+                <th>Situação Notas</th>
+                <th>Situação Frequência</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <ui:repeat var="disciplina" value="#{disciplinas}" varStatus="status">
+                <tr>
+                    <td>                        
+                        <h:outputText value="#{disciplina.nome}"/>
+                    </td>
+                    <td>                        
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                                <span class="sr-only">40% Complete (success)</span>
+                            </div>
+                        </div>                
+                    </td>
+                    <td>                        
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                                <span class="sr-only">40% Complete (success)</span>
+                            </div>
+                        </div>                
+                    </td>
+                    <td>
+                        <span class="glyphicon glyphicon-edit"></span>
+                        #{' '}
+                        <span class="glyphicon glyphicon-trash"></span>
+                        #{' '}
+                        <span class="glyphicon glyphicon-search"></span>
+                    </td>
+                </tr>
+            </ui:repeat>
+        </tbody>
+    </table>
+</ui:fragment>
+

@@ -1,0 +1,12 @@
+<ui:fragment xmlns="http://www.w3.org/1999/xhtml"
+             xmlns:h="http://xmlns.jcp.org/jsf/html"
+             xmlns:b="http://bootsfaces.net/ui"
+             xmlns:ui="http://java.sun.com/jsf/facelets">
+    <b:alert severity="#{(facesContext.maximumSeverity != null) and (facesContext.maximumSeverity.ordinal == 0) ? 'info' : 'danger'}"
+             title="#{(facesContext.maximumSeverity != null) and (facesContext.maximumSeverity.ordinal == 0) ? 'Parabéns!' : 'Ops, algo de errado aconteceu!'}"
+             closable="true"
+             rendered="#{not empty facesContext.messageList}">
+        <h:messages/>
+    </b:alert>
+</ui:fragment>
+
