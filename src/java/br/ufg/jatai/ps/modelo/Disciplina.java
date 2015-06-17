@@ -58,7 +58,7 @@ public class Disciplina implements Serializable {
         this.aluno = new Aluno();
     }
 
-    public double calcPorcentagemFaltasOcorridas() {
+    public double getPorcentagemFaltasOcorridas() {
         if (nFaltasPermitidas == 0) {
             return 0;
         }
@@ -68,7 +68,7 @@ public class Disciplina implements Serializable {
         return (((double) nFaltasOcorridas / (double) nFaltasPermitidas) * 100);
     }
 
-    public double calcPorcentagemPontosNecessarios() {
+    public double getPorcentagemPontosNecessarios() {
         if (NOTA_MAXIMA - pontosDistribuidos == 0) {
             return ((pontosObtidos / 10) * 100);
         }
@@ -78,7 +78,7 @@ public class Disciplina implements Serializable {
         return (((notaMinimaParaAprovacao - pontosObtidos) / (NOTA_MAXIMA - pontosDistribuidos)) * 100);
     }
 
-    private Situacao calcSituacao(double valor) {
+    private Situacao getSituacao(double valor) {
         if (valor <= 0.5) {
             return Situacao.NORMAL;
         }
@@ -88,16 +88,16 @@ public class Disciplina implements Serializable {
         return Situacao.GRAVE;
     }
 
-    public Situacao calcSituacaoFrequenciaAluno() {
+    public Situacao getSituacaoFrequenciaAluno() {
         // pfo = porcentagem de faltas ocorridas.
-        double pfo = calcPorcentagemFaltasOcorridas();
-        return calcSituacao(pfo);
+        double pfo = getPorcentagemFaltasOcorridas();
+        return getSituacao(pfo);
     }
 
-    public Situacao calcSituacaoNotaAluno() {
+    public Situacao getSituacaoNotaAluno() {
         // ppn = porcentagem de pontos necessários.
-        double ppn = calcPorcentagemPontosNecessarios();
-        return calcSituacao(ppn);
+        double ppn = getPorcentagemPontosNecessarios();
+        return getSituacao(ppn);
     }
 
     public Long getId() {
@@ -185,8 +185,8 @@ public class Disciplina implements Serializable {
         StringBuilder str = new StringBuilder();
         str.append("Disciplina: ").append(this.nome).append("\n")
                 .append("Professor: ").append(this.professor).append("\n")
-                .append("% Faltas ocorridas: ").append(this.calcPorcentagemFaltasOcorridas()).append("\n")
-                .append("% Pontos necessários: ").append(this.calcPorcentagemPontosNecessarios()).append("\n");
+                .append("% Faltas ocorridas: ").append(this.getPorcentagemFaltasOcorridas()).append("\n")
+                .append("% Pontos necessários: ").append(this.getPorcentagemPontosNecessarios()).append("\n");
         return str.toString();
     }
 
