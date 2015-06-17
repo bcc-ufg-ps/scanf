@@ -6,8 +6,6 @@ import br.ufg.jatai.ps.modelo.Disciplina;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaQuery;
-import org.eclipse.persistence.internal.jpa.querydef.CriteriaQueryImpl;
 
 public class DisciplinaDAOJPA implements DisciplinaDAO {
 
@@ -53,7 +51,7 @@ public class DisciplinaDAOJPA implements DisciplinaDAO {
         try {
             em.getTransaction().begin();
             Disciplina d = em.find(Disciplina.class, idDisciplina);
-            d.setnFaltasOcorridas(nFaltasOcorridas);
+            d.setFaltasOcorridas(nFaltasOcorridas);
             d.setPontosObtidos(pontosObtidos);
             d.setPontosDistribuidos(pontosDistribuidos);
             em.getTransaction().commit();

@@ -41,8 +41,50 @@
                             <h4 class="modal-title" id="myModalLabel">Nova Disciplina</h4>
                         </div>
                         <div class="modal-body">
+                            <b:row styleClass="show-grid">
+                                <b:column span="12" styleClass="show-grid">
+                                    <ui:include src="/WEB-INF/mensagens.xhtml"/>
+                                </b:column>
+                            </b:row>
+                            <b:row styleClass="show-grid">
+                                <b:column span="12" styleClass="show-grid">
+                                    <h:outputLabel value="Nome"/>
+                                    <b:inputText placeholder="Informe o nome da disciplina" 
+                                                 value="#{bdisciplina.disciplina.nome}" 
+                                                 required="true" 
+                                                 requiredMessage="O campo 'Nome' é obrigatório!"/>
+                                </b:column>
+                            </b:row>
+                            <b:row styleClass="show-grid">
+                                <b:column span="12" styleClass="show-grid">
+                                    <h:outputLabel value="Professor"/>
+                                    <b:inputText placeholder="Informe o nome do professor" 
+                                                 value="#{bdisciplina.disciplina.professor}" 
+                                                 required="true" 
+                                                 requiredMessage="O campo 'Professor' é obrigatório!"/>
+                                </b:column>
+                            </b:row>
+                            <b:row styleClass="show-grid">
+                                <b:column span="12" styleClass="show-grid">
+                                    <h:outputLabel value="Faltas permitidas"/>
+                                    <b:inputText placeholder="Informe a quantidade de faltas permitidas" 
+                                                 value="#{bdisciplina.disciplina.faltasPermitidas}" 
+                                                 required="true" 
+                                                 requiredMessage="O campo 'Faltas permitidas' é obrigatório!"/>
+                                </b:column>
+                            </b:row>
+                            <b:row styleClass="show-grid">
+                                <b:column span="12" styleClass="show-grid">
+                                    <h:outputLabel value="Nota mínima para aprovação"/>
+                                    <b:inputText placeholder="Informe a nota mínima" 
+                                                 value="#{bdisciplina.disciplina.notaMinimaParaAprovacao}" 
+                                                 required="true" 
+                                                 requiredMessage="O campo 'Nota mínima' é obrigatório!"/>
+                                </b:column>
+                            </b:row>
                         </div>
                         <div class="modal-footer">
+                            <b:commandButton value="Salvar" look="primary" icon="ok" action="#{bdisciplina.cadastrarDisciplina}"/>
                             <button type="button" class="btn btn-default" data-dismiss="modal">Sair</button>
                         </div>
                     </div>

@@ -3,6 +3,7 @@ package br.ufg.jatai.ps.modelo;
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -14,7 +15,7 @@ import javax.persistence.TemporalType;
 
 @Entity
 @NamedQueries({            
-    @NamedQuery(name = Disciplina.OBTER_DISCIPLINAS_POR_ALUNO, query = "select d from Disciplina d where d.aluno.id = :idAluno order by d.dataCadastramento desc"),
+    @NamedQuery(name = Disciplina.OBTER_DISCIPLINAS_POR_ALUNO, query = "select d from Disciplina d where d.aluno.id = :idAluno order by d.pontosObtidos asc"),
     @NamedQuery(name = Disciplina.OBTER_DISCIPLINAS_POR_NOME_OU_PROF, query = "select d from Disciplina d where d.aluno.id = :idAluno and (d.nome like :texto or d.professor like :texto) order by d.dataCadastramento desc")
 })
 public class Disciplina implements Serializable {
@@ -33,23 +34,23 @@ public class Disciplina implements Serializable {
     private Long id;
     private String nome;
     private String professor;
-    private int nFaltasPermitidas;
-    private int nFaltasOcorridas;
+    private int faltasPermitidas;
+    private int faltasOcorridas;
     private double notaMinimaParaAprovacao;
     private double pontosObtidos;
     private double pontosDistribuidos;
     @Temporal(TemporalType.DATE)
     private Date dataCadastramento;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private Aluno aluno;
 
     public Disciplina() {
         this.id = null;
         this.nome = "";
         this.professor = "";
-        this.nFaltasPermitidas = FALTAS_PERMITIDAS_DEFAULT;
+        this.faltasPermitidas = FALTAS_PERMITIDAS_DEFAULT;
         this.notaMinimaParaAprovacao = NOTA_MINIMA_DEFAULT;
-        this.nFaltasOcorridas = 0;
+        this.faltasOcorridas = 0;
         this.pontosDistribuidos = 0.0;
         this.pontosObtidos = 0.0;
         this.dataCadastramento = Calendar.getInstance().getTime();
@@ -57,13 +58,13 @@ public class Disciplina implements Serializable {
     }
 
     public double getPorcentagemFaltasOcorridas() {
-        if (nFaltasPermitidas == 0) {
+        if (faltasPermitidas == 0) {
             return 0;
         }
-        if (nFaltasOcorridas > nFaltasPermitidas) {
+        if (faltasOcorridas > faltasPermitidas) {
             return 100;
         }
-        return (((double) nFaltasOcorridas / (double) nFaltasPermitidas) * 100);
+        return (((double) faltasOcorridas / (double) faltasPermitidas) * 100);
     }
 
     public double getPorcentagemPontosNecessarios() {
@@ -122,20 +123,20 @@ public class Disciplina implements Serializable {
         this.professor = professor;
     }
 
-    public int getnFaltasPermitidas() {
-        return nFaltasPermitidas;
+    public int getFaltasPermitidas() {
+        return faltasPermitidas;
     }
 
-    public void setnFaltasPermitidas(int nFaltasPermitidas) {
-        this.nFaltasPermitidas = nFaltasPermitidas;
+    public void setFaltasPermitidas(int nFaltasPermitidas) {
+        this.faltasPermitidas = nFaltasPermitidas;
     }
 
-    public int getnFaltasOcorridas() {
-        return nFaltasOcorridas;
+    public int getFaltasOcorridas() {
+        return faltasOcorridas;
     }
 
-    public void setnFaltasOcorridas(int nFaltasOcorridas) {
-        this.nFaltasOcorridas = nFaltasOcorridas;
+    public void setFaltasOcorridas(int nFaltasOcorridas) {
+        this.faltasOcorridas = nFaltasOcorridas;
     }
 
     public double getNotaMinimaParaAprovacao() {
