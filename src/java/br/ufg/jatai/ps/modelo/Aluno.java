@@ -1,10 +1,12 @@
 package br.ufg.jatai.ps.modelo;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
+import javax.persistence.UniqueConstraint;
 
 @Entity
 @NamedQuery(name = Aluno.OBTER_ALUNO_POR_EMAIL, query = "select a from Aluno a where a.email = :email")
@@ -15,8 +17,11 @@ public class Aluno implements Serializable {
     @Id
     @GeneratedValue
     private Long id;
+    @Column(nullable = false)
     private String nome;
+    @Column(unique = true, nullable = false)
     private String email;
+    @Column(nullable = false)
     private String senha;
 
     public Aluno() {

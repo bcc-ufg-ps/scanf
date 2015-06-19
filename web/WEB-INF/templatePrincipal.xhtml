@@ -15,9 +15,8 @@
 
         <title>SCANF - Sistema para Controle Acadêmico de Notas e Frequências</title>
 
-        <!-- Bootstrap core CSS -->
-        <link rel="stylesheet" href="bootstrap.min.css"/>
-
+        <!-- Bootstrap -->
+        <link href="css/bootstrap.min.css" rel="stylesheet"/>
         <style>
             .show-grid {
                 margin-bottom: 5px;            
@@ -36,8 +35,9 @@
     <h:body>
         <ui:include src="/WEB-INF/menu.xhtml"/>
         <ui:insert name="corpo"/>      
-        <script src="jquery-1.11.2.min.js"></script>
-        <script src="bootstrap.min.js"></script> 
-    </h:body>
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="js/bootstrap.min.js"></script>    </h:body>
 </html>
 

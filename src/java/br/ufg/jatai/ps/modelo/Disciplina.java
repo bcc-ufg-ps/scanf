@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -32,16 +33,20 @@ public class Disciplina implements Serializable {
     @Id
     @GeneratedValue
     private Long id;
+    @Column(nullable = false, unique = true)
     private String nome;
+    @Column(nullable = false)
     private String professor;
+    @Column(nullable = false)
     private int faltasPermitidas;
     private int faltasOcorridas;
+    @Column(nullable = false)
     private double notaMinimaParaAprovacao;
     private double pontosObtidos;
     private double pontosDistribuidos;
     @Temporal(TemporalType.DATE)
     private Date dataCadastramento;
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.ALL)
     private Aluno aluno;
 
     public Disciplina() {

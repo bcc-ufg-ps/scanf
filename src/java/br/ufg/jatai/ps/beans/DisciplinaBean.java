@@ -5,6 +5,7 @@
  */
 package br.ufg.jatai.ps.beans;
 
+import br.ufg.jatai.ps.dao.AlunoDAO;
 import br.ufg.jatai.ps.dao.DisciplinaDAO;
 import br.ufg.jatai.ps.dao.jpa.FabricaDAOJPA;
 import br.ufg.jatai.ps.modelo.Aluno;
@@ -16,13 +17,14 @@ import javax.faces.bean.ManagedBean;
 public class DisciplinaBean {
 
     private final DisciplinaDAO dDAO = (new FabricaDAOJPA()).obterDisciplinaDAO();
+    private final AlunoDAO aDAO = (new FabricaDAOJPA()).obterAlunoDAO();
     private Disciplina disciplina = new Disciplina();
     
-    public void cadastrarDisciplina() {
-        Aluno u = new Aluno();
-        u.setId(1L);
-        disciplina.setAluno(u);
+    public String cadastrarDisciplina() {
+        Aluno u = aDAO.obterAlunoPorEmail("teste");
         dDAO.salvar(disciplina);
+        disciplina = new Disciplina();
+        return "minhasDisciplinas?faces-redirect=true";
     }    
     
     public List<Disciplina> getDisciplinas() {
