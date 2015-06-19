@@ -5,33 +5,27 @@
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 template="/WEB-INF/templatePrincipal.xhtml">
     <ui:define name="corpo">   
-        <h:form>
-            <b:container>
-                <b:panel>
-                    <f:facet name="heading">
-                        <b:row>
-                            <b:column span="12">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Pesquisar por nome da disciplina ou do professor..."/>
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-default" type="button">Buscar</button>
-                                    </span>
-                                </div><!-- /input-group -->
-                            </b:column>
-                        </b:row>
-                    </f:facet>
-                    <f:facet name="footer">
-                        <a data-toggle="modal" href="#novaDisciplina">
-                            <b:commandButton value="Nova disciplina" look="primary" icon="ok"/>
-                        </a>
-                    </f:facet>
-                    <ui:include src="/WEB-INF/mensagens.xhtml"/>
-                    <ui:include src="/WEB-INF/listaDisciplinas.xhtml">
-                        <ui:param name="disciplinas" value="#{bdisciplina.disciplinas}"/>
-                    </ui:include>
-                </b:panel>
-            </b:container>
+        <b:container>
+            <b:panel look="primary">
+                <f:facet name="heading">
+                    <span class="glyphicon glyphicon-list-alt"></span>
+                    Minhas disciplinas
+                </f:facet>
+                <f:facet name="footer">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#novaDisciplina">
+                        <span class="glyphicon glyphicon-ok"></span>
+                        Nova disciplina
+                    </button>
+                </f:facet>
+                <ui:include src="/WEB-INF/mensagens.xhtml"/>                
+                <ui:include src="/WEB-INF/listaDisciplinas.xhtml" rendered="#{not empty bdisciplina.disciplinas}">
+                    <ui:param name="disciplinas" value="#{bdisciplina.disciplinas}"/>
+                </ui:include>
+                <h:outputText value="Não há disciplinas cadastradas até o momento!" rendered="#{empty bdisciplina.disciplinas}"/>
+            </b:panel>
+        </b:container>
 
+        <h:form>
             <!-- Modal cadastro de disciplina -->
             <div class="modal fade" id="novaDisciplina" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
@@ -43,12 +37,7 @@
                         <div class="modal-body">
                             <b:row styleClass="show-grid">
                                 <b:column span="12" styleClass="show-grid">
-                                    <ui:include src="/WEB-INF/mensagens.xhtml"/>
-                                </b:column>
-                            </b:row>
-                            <b:row styleClass="show-grid">
-                                <b:column span="12" styleClass="show-grid">
-                                    <h:outputLabel value="Nome"/>
+                                    <h:outputLabel value="Nome *"/>
                                     <b:inputText placeholder="Informe o nome da disciplina" 
                                                  value="#{bdisciplina.disciplina.nome}" 
                                                  required="true" 
@@ -57,7 +46,7 @@
                             </b:row>
                             <b:row styleClass="show-grid">
                                 <b:column span="12" styleClass="show-grid">
-                                    <h:outputLabel value="Professor"/>
+                                    <h:outputLabel value="Professor *"/>
                                     <b:inputText placeholder="Informe o nome do professor" 
                                                  value="#{bdisciplina.disciplina.professor}" 
                                                  required="true" 
@@ -66,7 +55,7 @@
                             </b:row>
                             <b:row styleClass="show-grid">
                                 <b:column span="12" styleClass="show-grid">
-                                    <h:outputLabel value="Faltas permitidas"/>
+                                    <h:outputLabel value="Faltas permitidas *"/>
                                     <b:inputText placeholder="Informe a quantidade de faltas permitidas" 
                                                  value="#{bdisciplina.disciplina.faltasPermitidas}" 
                                                  required="true" 
@@ -75,11 +64,16 @@
                             </b:row>
                             <b:row styleClass="show-grid">
                                 <b:column span="12" styleClass="show-grid">
-                                    <h:outputLabel value="Nota mínima para aprovação"/>
+                                    <h:outputLabel value="Nota mínima para aprovação *"/>
                                     <b:inputText placeholder="Informe a nota mínima" 
                                                  value="#{bdisciplina.disciplina.notaMinimaParaAprovacao}" 
                                                  required="true" 
                                                  requiredMessage="O campo 'Nota mínima' é obrigatório!"/>
+                                </b:column>
+                            </b:row>
+                            <b:row styleClass="show-grid">
+                                <b:column span="12" styleClass="show-grid">
+                                    <h:outputText value="(*) Campos de preenchimento obrigatório"/>
                                 </b:column>
                             </b:row>
                         </div>

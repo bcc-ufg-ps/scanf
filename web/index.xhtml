@@ -37,7 +37,7 @@
                             </b:row>
                             <b:row styleClass="show-grid">
                                 <b:column span="12" styleClass="show-grid">
-                                    <h:outputLabel value="Nome"/>
+                                    <h:outputLabel value="Nome *"/>
                                     <b:inputText placeholder="Informe seu nome" 
                                                  value="#{bmusica.novoArtista.nome}" 
                                                  required="true" 
@@ -46,7 +46,7 @@
                             </b:row>
                             <b:row styleClass="show-grid">
                                 <b:column span="12" styleClass="show-grid">
-                                    <h:outputLabel value="Email"/>
+                                    <h:outputLabel value="Email *"/>
                                     <b:inputText placeholder="Informe seu email" 
                                                  value="#{bmusica.novoArtista.linkSobre}" 
                                                  required="true" 
@@ -55,7 +55,7 @@
                             </b:row>
                             <b:row styleClass="show-grid">
                                 <b:column span="12" styleClass="show-grid">
-                                    <h:outputLabel value="Senha"/>
+                                    <h:outputLabel value="Senha *"/>
                                     <b:inputText placeholder="Informe sua senha" 
                                                  value="#{bmusica.novoArtista.linkSobre}" 
                                                  required="true" 
@@ -64,11 +64,16 @@
                             </b:row>
                             <b:row styleClass="show-grid">
                                 <b:column span="12" styleClass="show-grid">
-                                    <h:outputLabel value="Confirmar senha"/>
+                                    <h:outputLabel value="Confirmar senha *"/>
                                     <b:inputText placeholder="Confirme sua senha" 
                                                  value="#{bmusica.novoArtista.linkSobre}" 
                                                  required="true" 
                                                  requiredMessage="O campo 'Confirmar senha' é obrigatório!"/>
+                                </b:column>
+                            </b:row>
+                            <b:row styleClass="show-grid">
+                                <b:column span="12" styleClass="show-grid">
+                                    <h:outputText value="(*) Campos de preenchimento obrigatório"/>
                                 </b:column>
                             </b:row>
                         </b:panel>

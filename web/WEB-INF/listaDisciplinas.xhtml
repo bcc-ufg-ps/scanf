@@ -3,96 +3,150 @@
              xmlns:b="http://bootsfaces.net/ui"
              xmlns:ui="http://java.sun.com/jsf/facelets"
              xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Disciplina</th>
-                <th>Situação Notas</th>
-                <th>Situação Frequência</th>
-                <th>Ações</th>
-            </tr>
-        </thead>
-        <tbody>
-            <ui:repeat var="disciplina" value="#{disciplinas}" varStatus="status">
+    <h:form>
+
+        <table class="table">
+            <thead>
                 <tr>
-                    <td>                        
-                        <h:outputText value="#{disciplina.nome}"/>
-                    </td>
-                    <td>
-                        <div class="progress">
-                            <h:panelGroup rendered="#{disciplina.porcentagemPontosNecessarios le 25}" >
-                                <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="#{disciplina.porcentagemPontosNecessarios}" aria-valuemin="0" aria-valuemax="100" style="width: #{disciplina.porcentagemPontosNecessarios}%"/>
-                            </h:panelGroup>
-                            <h:panelGroup rendered="#{disciplina.porcentagemPontosNecessarios le 50 and disciplina.porcentagemPontosNecessarios ge 26}" >
-                                <div class="progress-bar progress-bar-warning progress-bar-striped" role="progressbar" aria-valuenow="#{disciplina.porcentagemPontosNecessarios}" aria-valuemin="0" aria-valuemax="100" style="width: #{disciplina.porcentagemPontosNecessarios}%"/>
-                            </h:panelGroup>
-                            <h:panelGroup rendered="#{disciplina.porcentagemPontosNecessarios le 100 and disciplina.porcentagemPontosNecessarios ge 51}" >
-                                <div class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar" aria-valuenow="#{disciplina.porcentagemPontosNecessarios}" aria-valuemin="0" aria-valuemax="100" style="width: #{disciplina.porcentagemPontosNecessarios}%" title="ss"/>
-                            </h:panelGroup>
-                        </div>    
-                    </td>
-                    <td>                      
-                        <div class="progress">
-                            <h:panelGroup rendered="#{disciplina.porcentagemFaltasOcorridas le 25}" >
-                                <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="#{disciplina.porcentagemFaltasOcorridas}" aria-valuemin="0" aria-valuemax="100" style="width: #{disciplina.porcentagemFaltasOcorridas}%"/>
-                            </h:panelGroup>
-                            <h:panelGroup rendered="#{disciplina.porcentagemFaltasOcorridas le 50 and disciplina.porcentagemFaltasOcorridas ge 26}" >
-                                <div class="progress-bar progress-bar-warning progress-bar-striped" role="progressbar" aria-valuenow="#{disciplina.porcentagemFaltasOcorridas}" aria-valuemin="0" aria-valuemax="100" style="width: #{disciplina.porcentagemFaltasOcorridas}%"/>
-                            </h:panelGroup>
-                            <h:panelGroup rendered="#{disciplina.porcentagemFaltasOcorridas le 100 and disciplina.porcentagemFaltasOcorridas ge 51}" >
-                                <div class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar" aria-valuenow="#{disciplina.porcentagemFaltasOcorridas}" aria-valuemin="0" aria-valuemax="100" style="width: #{disciplina.porcentagemFaltasOcorridas}%" title="ss"/>
-                            </h:panelGroup>
-                        </div>    
-                    </td>
-                    <td>
-                        <span class="glyphicon glyphicon-edit"></span>
-                        #{' '}
-                        <span class="glyphicon glyphicon-trash"></span>
-                        #{' '}
-
-                        <a data-toggle="modal" href="#{'#'}#{status.index}">
-                            <span class="glyphicon glyphicon-search"></span>
-                        </a>
-                    </td>
+                    <th>Disciplina</th>
+                    <th>Situação Notas</th>
+                    <th>Situação Frequência</th>
+                    <th>Ações</th>
                 </tr>
+            </thead>
+            <tbody>
+                <ui:repeat var="disciplina" value="#{disciplinas}" varStatus="status">
+                    <tr>
+                        <td>                        
+                            <h:outputText value="#{disciplina.nome}"/>
+                        </td>
+                        <td>
+                            <div class="progress">
+                                <h:panelGroup rendered="#{disciplina.situacaoNotaAluno == 'NORMAL'}" >
+                                    <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="#{disciplina.porcentagemPontosNecessarios}" aria-valuemin="0" aria-valuemax="100" style="width: #{disciplina.porcentagemPontosNecessarios}%"/>
+                                </h:panelGroup>
+                                <h:panelGroup rendered="#{disciplina.situacaoNotaAluno == 'ALERTA'}" >
+                                    <div class="progress-bar progress-bar-warning progress-bar-striped" role="progressbar" aria-valuenow="#{disciplina.porcentagemPontosNecessarios}" aria-valuemin="0" aria-valuemax="100" style="width: #{disciplina.porcentagemPontosNecessarios}%"/>
+                                </h:panelGroup>
+                                <h:panelGroup rendered="#{disciplina.situacaoNotaAluno == 'GRAVE'}" >
+                                    <div class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar" aria-valuenow="#{disciplina.porcentagemPontosNecessarios}" aria-valuemin="0" aria-valuemax="100" style="width: #{disciplina.porcentagemPontosNecessarios}%" title="ss"/>
+                                </h:panelGroup>
+                            </div>    
+                        </td>
+                        <td>                      
+                            <div class="progress">
+                                <h:panelGroup rendered="#{disciplina.situacaoFrequenciaAluno == 'NORMAL'}" >
+                                    <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="#{disciplina.porcentagemFaltasOcorridas}" aria-valuemin="0" aria-valuemax="100" style="width: #{disciplina.porcentagemFaltasOcorridas}%"/>
+                                </h:panelGroup>
+                                <h:panelGroup rendered="#{disciplina.situacaoFrequenciaAluno == 'ALERTA'}" >
+                                    <div class="progress-bar progress-bar-warning progress-bar-striped" role="progressbar" aria-valuenow="#{disciplina.porcentagemFaltasOcorridas}" aria-valuemin="0" aria-valuemax="100" style="width: #{disciplina.porcentagemFaltasOcorridas}%"/>
+                                </h:panelGroup>
+                                <h:panelGroup rendered="#{disciplina.situacaoFrequenciaAluno == 'GRAVE'}" >
+                                    <div class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar" aria-valuenow="#{disciplina.porcentagemFaltasOcorridas}" aria-valuemin="0" aria-valuemax="100" style="width: #{disciplina.porcentagemFaltasOcorridas}%" title="ss"/>
+                                </h:panelGroup>
+                            </div>    
+                        </td>
+                        <td>
+                            <a data-toggle="modal" href="#{'#atualizar'}#{status.index}">
+                                <span class="glyphicon glyphicon-edit"></span>
+                            </a>
+                            #{' '}
+                            <span class="glyphicon glyphicon-trash"></span>
+                            #{' '}
 
-                <!-- Modal informações sobre a disciplina -->
-                <div class="modal fade" id="#{status.index}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"></span></button>
-                                <h4 class="modal-title" id="myModalLabel">Disciplina: <b>#{disciplina.nome}</b></h4>
-                            </div>
-                            <div class="modal-body">
-                                <ul class="list-group">
-                                    <li class="list-group-item">
-                                        <b><h:outputText value="Professor: "/></b>
-                                        <h:outputText value="#{disciplina.professor}"/>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <b><h:outputText value="Mínimo para ser aprovado: "/></b>
-                                        <h:outputText value="#{disciplina.notaMinimaParaAprovacao}"/>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <b><h:outputText value="Pontos obtidos/Pontos distribuídos: "/></b>
-                                        <h:outputText value="#{disciplina.pontosObtidos}/#{disciplina.pontosDistribuidos}"/>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <b><h:outputText value="Faltas ocorridas/Faltas permitidas: "/></b>
-                                        <h:outputText value="#{disciplina.faltasOcorridas}/#{disciplina.faltasPermitidas}"/>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Sair</button>
+                            <a data-toggle="modal" href="#{'#'}#{status.index}">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </a>
+                        </td>
+                    </tr>
+
+                    <!-- Modal informações sobre a disciplina -->
+                    <div class="modal fade" id="#{status.index}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"></span></button>
+                                    <h4 class="modal-title" id="myModalLabel">Visualizar disciplina: <b>#{disciplina.nome}</b></h4>
+                                </div>
+                                <div class="modal-body">
+                                    <ul class="list-group">
+                                        <li class="list-group-item">
+                                            <b><h:outputText value="Professor: "/></b>
+                                            <h:outputText value="#{disciplina.professor}"/>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <b><h:outputText value="Nota mínima para ser aprovado: "/></b>
+                                            <h:outputText value="#{disciplina.notaMinimaParaAprovacao}"/>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <b><h:outputText value="Pontos obtidos/Pontos distribuídos: "/></b>
+                                            <h:outputText value="#{disciplina.pontosObtidos}/#{disciplina.pontosDistribuidos}"/>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <b><h:outputText value="Faltas ocorridas/Faltas permitidas: "/></b>
+                                            <h:outputText value="#{disciplina.faltasOcorridas}/#{disciplina.faltasPermitidas}"/>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Sair</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>                
+                    </div>                
+                    <!-- Modal atualiar notas e frequência -->
+                    <div class="modal fade" id="atualizar#{status.index}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"></span></button>
+                                    <h4 class="modal-title" id="myModalLabel">Atualizar notas e frequências: <b>#{disciplina.nome}</b></h4>
+                                </div>
+                                <div class="modal-body">
+                                    <b:row styleClass="show-grid">
+                                        <b:column span="12" styleClass="show-grid">
+                                            <h:outputLabel value="Ponto distribuídos *"/>
+                                            <b:inputText placeholder="Informe a quantidade de pontos distribuídos" 
+                                                         value="#{disciplina.pontosDistribuidos}" 
+                                                         required="true" 
+                                                         requiredMessage="O campo 'Pontos distribuídos' é obrigatório!"/>
+                                        </b:column>
+                                    </b:row>
+                                    <b:row styleClass="show-grid">
+                                        <b:column span="12" styleClass="show-grid">
+                                            <h:outputLabel value="Ponto obtidos *"/>
+                                            <b:inputText placeholder="Informe a quantidade de pontos obtidos" 
+                                                         value="#{disciplina.pontosObtidos}" 
+                                                         required="true" 
+                                                         requiredMessage="O campo 'Pontos obtidos' é obrigatório!"/>
+                                        </b:column>
+                                    </b:row>
+                                    <b:row styleClass="show-grid">
+                                        <b:column span="12" styleClass="show-grid">
+                                            <h:outputLabel value="Faltas ocorridas *"/>
+                                            <b:inputText placeholder="Informe a quantidade de faltas ocorridas" 
+                                                         value="#{disciplina.faltasOcorridas}" 
+                                                         required="true" 
+                                                         requiredMessage="O campo 'Faltas ocorridas' é obrigatório!"/>
+                                        </b:column>
+                                    </b:row>
+                                    <b:row styleClass="show-grid">
+                                        <b:column span="12" styleClass="show-grid">
+                                            <h:outputText value="(*) Campos de preenchimento obrigatório"/>
+                                        </b:column>
+                                    </b:row>
+                                </div>
+                                <div class="modal-footer">
+                                    <b:commandButton value="Salvar" look="primary" icon="ok" action="#{bdisciplina.atualizarNotasEFrequencia(disciplina)}"/>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Sair</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>         
 
-            </ui:repeat>
-        </tbody>
-    </table>
+                </ui:repeat>
+            </tbody>
+        </table>
+    </h:form>
 </ui:fragment>
 

@@ -15,12 +15,11 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@NamedQueries({            
-    @NamedQuery(name = Disciplina.OBTER_DISCIPLINAS_POR_ALUNO, query = "select d from Disciplina d where d.aluno.id = :idAluno order by d.pontosObtidos asc"),
-    @NamedQuery(name = Disciplina.OBTER_DISCIPLINAS_POR_NOME_OU_PROF, query = "select d from Disciplina d where d.aluno.id = :idAluno and (d.nome like :texto or d.professor like :texto) order by d.dataCadastramento desc")
-})
+@NamedQuery(name = Disciplina.OBTER_DISCIPLINAS_POR_ALUNO, query = "select d from Disciplina d where d.aluno.id = :idAluno order by d.dataCadastramento desc")
 public class Disciplina implements Serializable {
+
     public static enum Situacao {
+
         NORMAL, ALERTA, GRAVE
     }
     public static final double NOTA_MAXIMA = 10.0;
@@ -42,11 +41,13 @@ public class Disciplina implements Serializable {
     private int faltasOcorridas;
     @Column(nullable = false)
     private double notaMinimaParaAprovacao;
+    @Column(nullable = false)
     private double pontosObtidos;
+    @Column(nullable = false)
     private double pontosDistribuidos;
     @Temporal(TemporalType.DATE)
     private Date dataCadastramento;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private Aluno aluno;
 
     public Disciplina() {
@@ -83,10 +84,10 @@ public class Disciplina implements Serializable {
     }
 
     private Situacao getSituacao(double valor) {
-        if (valor <= 0.5) {
+        if (valor <= 50) {
             return Situacao.NORMAL;
         }
-        if (valor <= 0.75) {
+        if (valor <= 75) {
             return Situacao.ALERTA;
         }
         return Situacao.GRAVE;

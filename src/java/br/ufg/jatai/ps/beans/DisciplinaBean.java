@@ -12,6 +12,7 @@ import br.ufg.jatai.ps.modelo.Aluno;
 import br.ufg.jatai.ps.modelo.Disciplina;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
+import javax.persistence.PersistenceException;
 
 @ManagedBean(name = "bdisciplina")
 public class DisciplinaBean {
@@ -20,16 +21,26 @@ public class DisciplinaBean {
     private final AlunoDAO aDAO = (new FabricaDAOJPA()).obterAlunoDAO();
     private Disciplina disciplina = new Disciplina();
     
+    public String atualizarNotasEFrequencia(Disciplina disciplina) {
+        dDAO.editarFrequenciaENota(disciplina);
+        return "minhasDisciplinas?faces-redirect=true";
+    }    
+    
     public String cadastrarDisciplina() {
         Aluno u = aDAO.obterAlunoPorEmail("teste");
+        disciplina.setAluno(u);
         dDAO.salvar(disciplina);
         disciplina = new Disciplina();
         return "minhasDisciplinas?faces-redirect=true";
     }    
-    
+
     public List<Disciplina> getDisciplinas() {
-        Aluno u = new Aluno();
-        u.setId(1L);
+        Aluno u; 
+        try {
+            u = aDAO.obterAlunoPorEmail("teste");
+        } catch(PersistenceException ex) {
+            u = new Aluno();            
+        }        
         return dDAO.obterDisciplinasPorAluno(u);
     }
 

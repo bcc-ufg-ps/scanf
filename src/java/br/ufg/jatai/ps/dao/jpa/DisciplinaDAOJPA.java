@@ -33,27 +33,12 @@ public class DisciplinaDAOJPA implements DisciplinaDAO {
         }
     }
     
-    public List<Disciplina> obterDisciplinasPorNomeOuProfessor(Aluno aluno, String texto) {
-        EntityManager em = JPAUtil.obterConexao();
-        try {
-            TypedQuery<Disciplina> tq = em.createNamedQuery(Disciplina.OBTER_DISCIPLINAS_POR_NOME_OU_PROF, Disciplina.class);
-            tq.setParameter("idAluno", aluno.getId());
-            tq.setParameter("texto", "%" + texto + "%");
-            return tq.getResultList();
-        } finally {
-            em.close();
-        }
-    }
-
     @Override
-    public void editarFrequenciaENota(Long idDisciplina, int nFaltasOcorridas, double pontosObtidos, double pontosDistribuidos) {
+    public void editarFrequenciaENota(Disciplina disciplina) {
         EntityManager em = JPAUtil.obterConexao();
         try {
             em.getTransaction().begin();
-            Disciplina d = em.find(Disciplina.class, idDisciplina);
-            d.setFaltasOcorridas(nFaltasOcorridas);
-            d.setPontosObtidos(pontosObtidos);
-            d.setPontosDistribuidos(pontosDistribuidos);
+            em.merge(disciplina);
             em.getTransaction().commit();
         } finally {
             em.close();
