@@ -21,8 +21,13 @@ public class DisciplinaBean {
     private final AlunoDAO aDAO = (new FabricaDAOJPA()).obterAlunoDAO();
     private Disciplina disciplina = new Disciplina();
     
-    public String atualizarNotasEFrequencia(Disciplina disciplina) {
-        dDAO.editarFrequenciaENota(disciplina);
+    public String atualizarDisciplina(Disciplina disciplina) {
+        dDAO.atualizar(disciplina);
+        return "minhasDisciplinas?faces-redirect=true";
+    }    
+
+    public String removerDisciplina(Disciplina disciplina) {
+        dDAO.remover(disciplina);
         return "minhasDisciplinas?faces-redirect=true";
     }    
     

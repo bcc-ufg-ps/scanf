@@ -93,16 +93,28 @@ public class Disciplina implements Serializable {
         return Situacao.GRAVE;
     }
 
-    public Situacao getSituacaoFrequenciaAluno() {
-        // pfo = porcentagem de faltas ocorridas.
-        double pfo = getPorcentagemFaltasOcorridas();
-        return getSituacao(pfo);
+    public boolean getSituacaoNotaGrave() {
+        return Situacao.GRAVE == getSituacao(getPorcentagemPontosNecessarios());
     }
 
-    public Situacao getSituacaoNotaAluno() {
-        // ppn = porcentagem de pontos necessários.
-        double ppn = getPorcentagemPontosNecessarios();
-        return getSituacao(ppn);
+    public boolean getSituacaoNotaNormal() {
+        return Situacao.NORMAL == getSituacao(getPorcentagemPontosNecessarios());
+    }
+
+    public boolean getSituacaoNotaAlerta() {
+        return Situacao.ALERTA == getSituacao(getPorcentagemPontosNecessarios());
+    }
+
+    public boolean getSituacaoFrequenciaGrave() {
+        return Situacao.GRAVE == getSituacao(getPorcentagemFaltasOcorridas());
+    }
+
+    public boolean getSituacaoFrequenciaNormal() {
+        return Situacao.NORMAL == getSituacao(getPorcentagemFaltasOcorridas());
+    }
+
+    public boolean getSituacaoFrequenciaAlerta() {
+        return Situacao.ALERTA == getSituacao(getPorcentagemFaltasOcorridas());
     }
 
     public Long getId() {

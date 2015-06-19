@@ -34,7 +34,7 @@ public class DisciplinaDAOJPA implements DisciplinaDAO {
     }
     
     @Override
-    public void editarFrequenciaENota(Disciplina disciplina) {
+    public void atualizar(Disciplina disciplina) {
         EntityManager em = JPAUtil.obterConexao();
         try {
             em.getTransaction().begin();
@@ -44,4 +44,18 @@ public class DisciplinaDAOJPA implements DisciplinaDAO {
             em.close();
         }
     }
+
+    @Override
+    public void remover(Disciplina disciplina) {
+        EntityManager em = JPAUtil.obterConexao();
+        try {
+            em.getTransaction().begin();
+            disciplina = em.merge(disciplina);
+            em.remove(disciplina);
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
+    }
+
 }

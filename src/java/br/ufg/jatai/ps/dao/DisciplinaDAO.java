@@ -7,5 +7,6 @@ import java.util.List;
 public interface DisciplinaDAO {
     public void salvar(Disciplina disiplina);
     public List<Disciplina> obterDisciplinasPorAluno(Aluno aluno);
-    public void editarFrequenciaENota(Disciplina disciplina);    
+    public void atualizar(Disciplina disciplina);    
+    public void remover(Disciplina disciplina);    
 }
