@@ -4,5 +4,6 @@ import br.ufg.jatai.ps.modelo.Aluno;
 
 public interface AlunoDAO {
     public void salvar(Aluno aluno);
-    public Aluno obterAlunoPorEmail(String email);
+    public boolean existeAlunoComEmail(String email);
+    public Aluno obterAlunoPorEmailESenha(String email, String senha);
 }

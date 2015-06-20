@@ -11,29 +11,21 @@
                         <th>Disciplinas</th>
                         <th>Situação Notas</th>
                         <th>Situação Frequência</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     <ui:repeat var="disciplina" value="#{disciplinas}" varStatus="status">
                         <tr>
                             <td>                        
-                                <a data-toggle="modal tooltip" href="#{'#atualizar'}#{status.index}" data-placement="top" title="Atualizar notas e frequência">
-                                    <span class="glyphicon glyphicon-edit"></span>
-                                </a>
-                                #{' '}
-                                <a data-toggle="modal tooltip" href="#{'#'}#{status.index}" data-placement="top" title="Visualizar disciplina">
-                                    <span class="glyphicon glyphicon-search"></span>
-                                </a>
-                                #{' '}
-                                <a data-toggle="modal tooltip" href="#{'#remover'}#{status.index}" data-placement="top" title="Remover disciplina">
-                                    <span class="glyphicon glyphicon-trash"></span>
-                                </a>
                                 <b>
-                                    <h:outputText value="#{disciplina.nome}"/>
-                                    #{' '}
-                                    <h:outputFormat value="- {0}">
-                                        <f:param value="#{disciplina.professor}"/>
-                                    </h:outputFormat>
+                                    <a data-toggle="modal" href="#{'#'}#{status.index}" data-placement="top" title="Visualizar disciplina">
+                                        <h:outputText value="#{disciplina.nome}"/>
+                                        #{' '}
+                                        <h:outputFormat value="- {0}">
+                                            <f:param value="#{disciplina.professor}"/>
+                                        </h:outputFormat>
+                                    </a>
                                 </b>
                             </td>
                             <td>
@@ -96,6 +88,16 @@
                                              title="#{disciplina.porcentagemFaltasOcorridas}%"/>
                                     </h:panelGroup>
                                 </div>    
+                            </td>
+                            <td>
+                                <a data-toggle="modal" href="#{'#atualizar'}#{status.index}" data-placement="top" title="Atualizar notas e frequência">
+                                    <span class="glyphicon glyphicon-edit"></span>
+                                </a>
+                                #{' '}
+                                <a data-toggle="modal" href="#{'#remover'}#{status.index}" data-placement="top" title="Remover disciplina">
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                </a>
+
                             </td>
                         </tr>
 

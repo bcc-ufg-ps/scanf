@@ -10,9 +10,12 @@ import br.ufg.jatai.ps.dao.DisciplinaDAO;
 import br.ufg.jatai.ps.dao.jpa.FabricaDAOJPA;
 import br.ufg.jatai.ps.modelo.Aluno;
 import br.ufg.jatai.ps.modelo.Disciplina;
+import br.ufg.jatai.ps.util.Mensagens;
+import br.ufg.jatai.ps.util.Sessao;
+import java.util.ArrayList;
 import java.util.List;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.persistence.PersistenceException;
 
 @ManagedBean(name = "bdisciplina")
 public class DisciplinaBean {
@@ -32,21 +35,28 @@ public class DisciplinaBean {
     }    
     
     public String cadastrarDisciplina() {
-        Aluno u = aDAO.obterAlunoPorEmail("teste");
-        disciplina.setAluno(u);
+        Aluno alunoSessao = Sessao.obterAlunoSessao();        
+        if (alunoSessao == null) {
+            Mensagens.adicionarMensagem(
+                    FacesMessage.SEVERITY_ERROR, 
+                    "Não foi possível cadastrar esse disciplina. Por favor, entre em contato com o administrador do sistema.");
+            return null;
+        }
+        disciplina.setAluno(alunoSessao);
         dDAO.salvar(disciplina);
         disciplina = new Disciplina();
         return "minhasDisciplinas?faces-redirect=true";
     }    
 
     public List<Disciplina> getDisciplinas() {
-        Aluno u; 
-        try {
-            u = aDAO.obterAlunoPorEmail("teste");
-        } catch(PersistenceException ex) {
-            u = new Aluno();            
-        }        
-        return dDAO.obterDisciplinasPorAluno(u);
+        Aluno alunoSessao = Sessao.obterAlunoSessao();        
+        if (alunoSessao == null) {
+            Mensagens.adicionarMensagem(
+                    FacesMessage.SEVERITY_ERROR, 
+                    "Não foi possível recuperar a lista de disciplinas. Por favor, entre em contato com o administrador do sistema.");
+            return new ArrayList<>();
+        }
+        return dDAO.obterDisciplinasPorAluno(alunoSessao);
     }
 
     public Disciplina getDisciplina() {
@@ -55,7 +65,5 @@ public class DisciplinaBean {
 
     public void setDisciplina(Disciplina disciplina) {
         this.disciplina = disciplina;
-    }
-
-    
+    }    
 }

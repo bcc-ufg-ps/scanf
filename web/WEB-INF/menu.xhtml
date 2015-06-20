@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <ui:fragment 
     xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:b="http://bootsfaces.net/ui"
     xmlns:ui="http://java.sun.com/jsf/facelets">
     <nav class="navbar navbar-default navbar-static-top">
         <div class="container">
@@ -19,16 +21,31 @@
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a href="./minhasDisciplinas.xhtml">Minhas disciplinas</a></li>
-                </ul>
-                <form class="navbar-form navbar-right">
-                    <div class="form-group">
-                        <input type="text" placeholder="Email" class="form-control"/>
-                    </div>
-                    <div class="form-group">
-                        <input type="password" placeholder="Senha" class="form-control"/>
-                    </div>
-                    <button type="submit" class="btn btn-success">Entrar</button>
-                </form>
+                </ul>                
+                <h:form class="nav navbar-nav navbar-right">
+                    <h:panelGrid columns="3" rendered="#{not baluno.estahLogado()}" class="navbar-form">
+                        <div class="form-group">
+                            <b:inputText value="#{baluno.aluno.email}" 
+                                         required="true" 
+                                         requiredMessage="O campo 'Email' é obrigatório!"/>
+                        </div>
+                        <div class="form-group">
+                            <h:inputSecret class="form-control"
+                                           value="#{baluno.aluno.senha}" 
+                                           required="true"                                                  
+                                           requiredMessage="O campo 'Senha' é obrigatório!"/>
+                        </div>
+                        #{' '}
+                        <b:commandButton value="Entrar" look="success" icon="ok" action="#{baluno.autenticar}"/>
+                    </h:panelGrid>
+                    <h:panelGrid columns="1" rendered="#{baluno.estahLogado()}">
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a href="./">Default <span class="sr-only">(current)</span></a></li>
+                            <li><a href="../navbar-static-top/">Static top</a></li>
+                            <li><a href="../navbar-fixed-top/">Fixed top</a></li>
+                        </ul>
+                    </h:panelGrid>
+                </h:form>
             </div><!--/.navbar-collapse -->
         </div>
     </nav>

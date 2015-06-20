@@ -5,13 +5,18 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
 @Entity
-@NamedQuery(name = Aluno.OBTER_ALUNO_POR_EMAIL, query = "select a from Aluno a where a.email = :email")
+@NamedQueries({
+    @NamedQuery(name = Aluno.EXISTE_ALUNO_COM_EMAIL, query = "select count(a) from Aluno a where a.email = :email"),
+    @NamedQuery(name = Aluno.OBTER_ALUNO_POR_EMAIL_E_SENHA, query = "select a from Aluno a where a.email = :email and a.senha = :senha")
+})
 public class Aluno implements Serializable {
 
-    public static final String OBTER_ALUNO_POR_EMAIL = "obterAlunoPorEmail";
+    public static final String EXISTE_ALUNO_COM_EMAIL = "existeAlunoComEmail";
+    public static final String OBTER_ALUNO_POR_EMAIL_E_SENHA = "obterAlunoPorEmailESenha";
 
     @Id
     @GeneratedValue
@@ -75,6 +80,5 @@ public class Aluno implements Serializable {
     public String toString() {
         return "Aluno:" + nome + ", Email: " + email;
     }
-    
-    
+
 }

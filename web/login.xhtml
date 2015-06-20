@@ -15,10 +15,10 @@
                         <b:panel look="primary">
                             <f:facet name="heading">
                                 <span class="glyphicon glyphicon-user"></span>
-                                Não conhece SCANF ainda? Você pode resolver isso agora...
+                                Falta pouco para você conhecer o SCANF, faça seu login e aproveite...
                             </f:facet>
                             <f:facet name="footer">
-                                <b:commandButton value="Cadastrar" look="primary" icon="ok" action="#{baluno.cadastrarAluno}"/>
+                                <b:commandButton value="Entrar" look="primary" icon="ok" action="#{baluno.autenticar}"/>
                             </f:facet>
                             <b:row styleClass="show-grid">
                                 <b:column span="12" styleClass="show-grid">
@@ -27,16 +27,7 @@
                             </b:row>
                             <b:row styleClass="show-grid">
                                 <b:column span="12" styleClass="show-grid">
-                                    <h:outputLabel value="Nome *"/>
-                                    <b:inputText placeholder="Informe seu nome" 
-                                                 value="#{baluno.aluno.nome}" 
-                                                 required="true" 
-                                                 requiredMessage="O campo 'Nome' é obrigatório!"/>
-                                </b:column>
-                            </b:row>
-                            <b:row styleClass="show-grid">
-                                <b:column span="12" styleClass="show-grid">
-                                    <h:outputLabel value="Email *"/>
+                                    <h:outputLabel value="Email"/>
                                     <b:inputText placeholder="seu_email@exemplo.com" 
                                                  value="#{baluno.aluno.email}" 
                                                  required="true" 
@@ -54,16 +45,7 @@
                             </b:row>
                             <b:row styleClass="show-grid">
                                 <b:column span="12" styleClass="show-grid">
-                                    <h:outputLabel value="Confirmar senha *"/>
-                                    <h:inputSecret  class="form-control"
-                                                    value="#{baluno.confirmarSenha}" 
-                                                    required="true" 
-                                                    requiredMessage="O campo 'Confirmar senha' é obrigatório!"/>
-                                </b:column>
-                            </b:row>
-                            <b:row styleClass="show-grid">
-                                <b:column span="12" styleClass="show-grid">
-                                    <h:outputText value="* Campos de preenchimento obrigatório."/>
+                                    <h:outputText value="* Diferencia caracteres maiúsculos e minúsculos"/>
                                 </b:column>
                             </b:row>
                         </b:panel>
