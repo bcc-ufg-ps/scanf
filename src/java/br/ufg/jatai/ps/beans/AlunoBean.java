@@ -12,6 +12,9 @@ import br.ufg.jatai.ps.util.Mensagens;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 
 @ManagedBean(name = "baluno")
 @SessionScoped
@@ -25,7 +28,7 @@ public class AlunoBean {
     public boolean estahLogado() {
         return (alunoSessao != null);
     }
-    
+
     public String cadastrarAluno() {
         if (!confirmarSenha.equals(aluno.getSenha())) {
             Mensagens.adicionarMensagem(
@@ -46,13 +49,20 @@ public class AlunoBean {
 
     public String autenticar() {
         alunoSessao = aDAO.obterAlunoPorEmailESenha(aluno.getEmail(), aluno.getSenha());
-        if (alunoSessao == null)  {
+        if (alunoSessao == null) {
             Mensagens.adicionarMensagem(
                     FacesMessage.SEVERITY_ERROR,
                     "Email ou senha inválidos!");
             return null;
         }
         return "minhasDisciplinas.xhtml?faces-redirect=true";
+    }
+
+    public String sair() {
+        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+        HttpSession session = (HttpSession) externalContext.getSession(false);
+        session.invalidate();
+        return "index.xhtml?faces-redirect=true";
     }
 
     public Aluno getAluno() {
@@ -78,5 +88,5 @@ public class AlunoBean {
     public void setAlunoSessao(Aluno alunoSessao) {
         this.alunoSessao = alunoSessao;
     }
-    
+
 }

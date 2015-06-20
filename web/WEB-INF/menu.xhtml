@@ -5,49 +5,53 @@
     xmlns:b="http://bootsfaces.net/ui"
     xmlns:ui="http://java.sun.com/jsf/facelets">
     <nav class="navbar navbar-default navbar-static-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.xhtml">
-                    <span class="glyphicon glyphicon-education"></span>
-                    SCANF
-                </a>
+        <h:form>
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.xhtml">
+                        <span class="glyphicon glyphicon-education"></span>
+                        SCANF
+                    </a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-form navbar-right">
+                        <h:panelGroup rendered="#{not baluno.estahLogado()}">
+                            <div class="form-group">
+                                <b:inputText value="#{baluno.aluno.email}" 
+                                             required="true" 
+                                             requiredMessage="O campo 'Email' é obrigatório!"/>
+                            </div>
+                            <div class="form-group">
+                                <h:inputSecret class="form-control"
+                                               value="#{baluno.aluno.senha}" 
+                                               required="true"                                                  
+                                               requiredMessage="O campo 'Senha' é obrigatório!"/>
+                            </div>
+                            #{' '}
+                            <b:commandButton value="Entrar" look="success" icon="ok" action="#{baluno.autenticar}"/>
+                        </h:panelGroup>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <h:panelGroup rendered="#{baluno.estahLogado()}">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">#{baluno.alunoSessao.nome}<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="./minhasDisciplinas.xhtml">Minhas disciplinas</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><h:commandLink action="#{baluno.sair}">Sair</h:commandLink></li>
+                                </ul>
+                            </li>
+                        </h:panelGroup>
+                    </ul>
+                </div><!--/.navbar-collapse -->
             </div>
-            <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a href="./minhasDisciplinas.xhtml">Minhas disciplinas</a></li>
-                </ul>                
-                <h:form class="nav navbar-nav navbar-right">
-                    <h:panelGrid columns="3" rendered="#{not baluno.estahLogado()}" class="navbar-form">
-                        <div class="form-group">
-                            <b:inputText value="#{baluno.aluno.email}" 
-                                         required="true" 
-                                         requiredMessage="O campo 'Email' é obrigatório!"/>
-                        </div>
-                        <div class="form-group">
-                            <h:inputSecret class="form-control"
-                                           value="#{baluno.aluno.senha}" 
-                                           required="true"                                                  
-                                           requiredMessage="O campo 'Senha' é obrigatório!"/>
-                        </div>
-                        #{' '}
-                        <b:commandButton value="Entrar" look="success" icon="ok" action="#{baluno.autenticar}"/>
-                    </h:panelGrid>
-                    <h:panelGrid columns="1" rendered="#{baluno.estahLogado()}">
-                        <ul class="nav navbar-nav">
-                            <li class="active"><a href="./">Default <span class="sr-only">(current)</span></a></li>
-                            <li><a href="../navbar-static-top/">Static top</a></li>
-                            <li><a href="../navbar-fixed-top/">Fixed top</a></li>
-                        </ul>
-                    </h:panelGrid>
-                </h:form>
-            </div><!--/.navbar-collapse -->
-        </div>
+        </h:form>
     </nav>
 </ui:fragment>
 
