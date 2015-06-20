@@ -32,12 +32,12 @@ public class FiltroAutenticacao implements PhaseListener {
         FacesContext context = FacesContext.getCurrentInstance();
         String viewId = context.getViewRoot().getViewId();
         if (!allowedPages.contains(viewId)) {
-            AlunoBean baluno = (AlunoBean) context.getELContext().getELResolver().getValue(context.getELContext(), null, "userBean");
+            AlunoBean baluno = (AlunoBean) context.getELContext().getELResolver().getValue(context.getELContext(), null, "baluno");
             if (!baluno.estahLogado()) {
                 NavigationHandler navigator = context
                         .getApplication()
                         .getNavigationHandler();
-                navigator.handleNavigation(context, null, "login");
+                navigator.handleNavigation(context, null, "/login.xhtml?faces-redirect=true");
             }
         }
     }
