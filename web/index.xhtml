@@ -21,7 +21,10 @@
                                 <iframe class="embed-responsive-item" src="//www.youtube.com/embed/aXol6Wz1JjE?rel=0"></iframe>
                             </div>
                             <br/>
-                            <b:commandButton value="Saiba mais &#187;" look="Default" action="#{bmusica.salvarArtistaApenas}"/>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#saibaMais">
+                                <span class="glyphicon glyphicon-ok"></span>
+                                Saiba mais
+                            </button>
 
                         </b:panel>
                     </b:column>
@@ -32,7 +35,7 @@
                                 Não conhece SCANF ainda? Você pode resolver isso agora...
                             </f:facet>
                             <f:facet name="footer">
-                                <b:commandButton value="Cadastrar" look="primary" icon="ok"/>
+                                <b:commandButton value="Cadastrar" look="primary" icon="ok" action="#{baluno.cadastrarAluno}"/>
                             </f:facet>
                             <b:row styleClass="show-grid">
                                 <b:column span="12" styleClass="show-grid">
@@ -43,7 +46,7 @@
                                 <b:column span="12" styleClass="show-grid">
                                     <h:outputLabel value="Nome *"/>
                                     <b:inputText placeholder="Informe seu nome" 
-                                                 value="#{bmusica.novoArtista.nome}" 
+                                                 value="#{baluno.aluno.nome}" 
                                                  required="true" 
                                                  requiredMessage="O campo 'Nome' é obrigatório!"/>
                                 </b:column>
@@ -51,8 +54,8 @@
                             <b:row styleClass="show-grid">
                                 <b:column span="12" styleClass="show-grid">
                                     <h:outputLabel value="Email *"/>
-                                    <b:inputText placeholder="Informe seu email" 
-                                                 value="#{bmusica.novoArtista.linkSobre}" 
+                                    <b:inputText placeholder="seu_email@exemplo.com" 
+                                                 value="#{baluno.aluno.email}" 
                                                  required="true" 
                                                  requiredMessage="O campo 'Email' é obrigatório!"/>
                                 </b:column>
@@ -60,19 +63,19 @@
                             <b:row styleClass="show-grid">
                                 <b:column span="12" styleClass="show-grid">
                                     <h:outputLabel value="Senha *"/>
-                                    <b:inputText placeholder="Informe sua senha" 
-                                                 value="#{bmusica.novoArtista.linkSobre}" 
-                                                 required="true" 
-                                                 requiredMessage="O campo 'Senha' é obrigatório!"/>
+                                    <h:inputSecret class="form-control"
+                                                   value="#{baluno.aluno.senha}" 
+                                                   required="true"                                                  
+                                                   requiredMessage="O campo 'Senha' é obrigatório!"/>
                                 </b:column>
                             </b:row>
                             <b:row styleClass="show-grid">
                                 <b:column span="12" styleClass="show-grid">
                                     <h:outputLabel value="Confirmar senha *"/>
-                                    <b:inputText placeholder="Confirme sua senha" 
-                                                 value="#{bmusica.novoArtista.linkSobre}" 
-                                                 required="true" 
-                                                 requiredMessage="O campo 'Confirmar senha' é obrigatório!"/>
+                                    <h:inputSecret  class="form-control"
+                                                    value="#{baluno.confirmarSenha}" 
+                                                    required="true" 
+                                                    requiredMessage="O campo 'Confirmar senha' é obrigatório!"/>
                                 </b:column>
                             </b:row>
                             <b:row styleClass="show-grid">
@@ -82,9 +85,46 @@
                             </b:row>
                         </b:panel>
                     </b:column>
-
                 </b:row>
             </b:container>
+            <!-- Modal remover disciplina -->
+            <div class="modal fade" id="saibaMais" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"></span></button>
+                            <h4 class="modal-title" id="myModalLabel">Um pouco mais sobre o SCANF...</h4>
+                        </div>
+                        <div class="modal-body">
+                            <b><p>Descrição e Contexto</p></b>
+                            <p>SCANF tem como objetivo permitir que alunos controlem suas notas e sua frequência nas disciplinas cursadas por eles. A ideia é que o sistema ajude o aluno a se organizar e planejar melhor sua participação nas disciplinas, evitando que surpresas desagradáveis aconteçam, como a reprovação por frequência em uma disciplina ou a necessidade de se obter um rendimento muito alto nas últimas avaliações da disciplina.</p>
+                            <p>Este foi um projeto desenvolvido como estudo de caso da disciplina <b>Projeto de Software - 2015/1</b>, do curso <a href="http://computacao.jatai.ufg.br/" target="_blank">Bacharelado em Ciência da Computação</a> da <a href="http://jatai.ufg.br/" target="_blank">Universidade Federal de Goiás/Regional Jataí</a>.</p>
+                            <hr/>
+                            <b><p>Tecnologias utilizadas</p></b>
+                            Frameworks: 
+                            <a href="http://www.eclipse.org/eclipselink/" target="_blank">EclipseLink (JPA)</a>,
+                            <a href="http://www.oracle.com/technetwork/java/javaee/javaserverfaces-139869.html" target="_blank">Mojarra (JSF)</a><br/>
+                            SGBD/Servlet container: 
+                            <a href="https://www.mysql.com/" target="_blank">MySQL</a>, 
+                            <a href="https://tomcat.apache.org/" target="_blank">Tomcat</a><br/>
+                            Front-end: 
+                            <a href="http://getbootstrap.com/" target="_blank">Bootstrap</a>, 
+                            <a href="http://www.bootsfaces.net/" target="_blank">Bootsface</a><br/>
+                            Utilitários/IDE:
+                            <a href="https://icons8.com/" target="_blank">Icon8</a>, 
+                            <a href="http://www.favicon-generator.org/" target="_blank">Favicon Generator</a>, 
+                            <a href="https://netbeans.org/" target="_blank">Netbeans</a><br/>
+                            Hospedagem:
+                            <a href="https://openshift.redhat.com" target="_blank">Openshift</a>
+                            <hr/>
+                            <p><b>Contribua com este projeto via <a href="github.com/bcc-ufg-ps/scanf">Github</a>.</b></p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Sair</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </h:form>
     </ui:define>
 </ui:composition>

@@ -6,7 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
-import javax.persistence.UniqueConstraint;
 
 @Entity
 @NamedQuery(name = Aluno.OBTER_ALUNO_POR_EMAIL, query = "select a from Aluno a where a.email = :email")
@@ -30,12 +29,14 @@ public class Aluno implements Serializable {
         this.senha = "";
     }
 
-    public boolean autenticar(String email, String senha) {
-        if (email == null || senha == null) {
+    public boolean autenticar(Aluno a) {
+        String aEmail = a.getEmail();
+        String aSenha = a.getSenha();
+        if (aEmail == null || aSenha == null) {
             return false;
         }
-        return (this.email.equals(email)
-                && this.senha.equals(senha));
+        return (this.email.equals(aEmail)
+                && this.senha.equals(aSenha));
     }
 
     public Long getId() {
