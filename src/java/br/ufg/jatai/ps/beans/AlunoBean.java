@@ -49,6 +49,7 @@ public class AlunoBean {
 
     public String autenticar() {
         alunoSessao = aDAO.obterAlunoPorEmailESenha(aluno.getEmail(), aluno.getSenha());
+        aluno = new Aluno();
         if (alunoSessao == null) {
             Mensagens.adicionarMensagem(
                     FacesMessage.SEVERITY_ERROR,
@@ -62,6 +63,7 @@ public class AlunoBean {
         ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
         HttpSession session = (HttpSession) externalContext.getSession(false);
         session.invalidate();
+        aluno = new Aluno();
         return "index.xhtml?faces-redirect=true";
     }
 

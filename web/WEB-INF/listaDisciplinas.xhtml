@@ -29,71 +29,65 @@
                                 </b>
                             </td>
                             <td>
-                                <div class="progress">
-                                    <h:panelGroup rendered="#{disciplina.situacaoNotaNormal}" >
-                                        <div class="progress-bar progress-bar-success progress-bar-striped" 
-                                             role="progressbar" 
-                                             aria-valuenow="#{disciplina.porcentagemPontosNecessarios}" 
-                                             aria-valuemin="0" aria-valuemax="100" 
-                                             style="width: #{disciplina.porcentagemPontosNecessarios}%"
-                                             title="#{disciplina.porcentagemPontosNecessarios}%"/>
-                                    </h:panelGroup>
-                                    <h:panelGroup rendered="#{disciplina.situacaoNotaAlerta}" >
-                                        <div class="progress-bar progress-bar-warning progress-bar-striped" 
-                                             role="progressbar" 
-                                             aria-valuenow="#{disciplina.porcentagemPontosNecessarios}" 
-                                             aria-valuemin="0" 
-                                             aria-valuemax="100" 
-                                             style="width: #{disciplina.porcentagemPontosNecessarios}%"
-                                             title="#{disciplina.porcentagemPontosNecessarios}%"/>
-                                    </h:panelGroup>
-                                    <h:panelGroup rendered="#{disciplina.situacaoNotaGrave}" >
-                                        <div class="progress-bar progress-bar-danger progress-bar-striped" 
-                                             role="progressbar" 
-                                             aria-valuenow="#{disciplina.porcentagemPontosNecessarios}" 
-                                             aria-valuemin="0" 
-                                             aria-valuemax="100" 
-                                             style="width: #{disciplina.porcentagemPontosNecessarios}%" 
-                                             title="#{disciplina.porcentagemPontosNecessarios}%"/>
-                                    </h:panelGroup>
-                                </div>
+                                <a data-toggle="modal" href="#{'#atualizar'}#{status.index}" data-placement="top" title="Situação = #{disciplina.situacaoNotaAluno}">
+                                    <div class="progress">
+                                        <h:panelGroup rendered="#{disciplina.situacaoNotaNormal}" >
+                                            <div class="progress-bar progress-bar-success progress-bar-striped" 
+                                                 role="progressbar" 
+                                                 aria-valuenow="#{disciplina.porcentagemPontosNecessarios}" 
+                                                 aria-valuemin="0" aria-valuemax="100" 
+                                                 style="width: #{disciplina.porcentagemPontosNecessarios}%"/>
+                                        </h:panelGroup>
+                                        <h:panelGroup rendered="#{disciplina.situacaoNotaAlerta}" >
+                                            <div class="progress-bar progress-bar-warning progress-bar-striped" 
+                                                 role="progressbar" 
+                                                 aria-valuenow="#{disciplina.porcentagemPontosNecessarios}" 
+                                                 aria-valuemin="0" 
+                                                 aria-valuemax="100" 
+                                                 style="width: #{disciplina.porcentagemPontosNecessarios}%"/>
+                                        </h:panelGroup>
+                                        <h:panelGroup rendered="#{disciplina.situacaoNotaGrave}" >
+                                            <div class="progress-bar progress-bar-danger progress-bar-striped" 
+                                                 role="progressbar" 
+                                                 aria-valuenow="#{disciplina.porcentagemPontosNecessarios}" 
+                                                 aria-valuemin="0" 
+                                                 aria-valuemax="100" 
+                                                 style="width: #{disciplina.porcentagemPontosNecessarios}%"/> 
+                                        </h:panelGroup>
+                                    </div>
+                                </a>
                             </td>
                             <td>                      
-                                <div class="progress">
-                                    <h:panelGroup rendered="#{disciplina.situacaoFrequenciaNormal}" >
-                                        <div class="progress-bar progress-bar-success progress-bar-striped" 
-                                             role="progressbar" 
-                                             aria-valuenow="#{disciplina.porcentagemFaltasOcorridas}" 
-                                             aria-valuemin="0" 
-                                             aria-valuemax="100" 
-                                             style="width: #{disciplina.porcentagemFaltasOcorridas}%"
-                                             title="#{disciplina.porcentagemFaltasOcorridas}%"/>
-                                    </h:panelGroup>
-                                    <h:panelGroup rendered="#{disciplina.situacaoFrequenciaAlerta}" >
-                                        <div class="progress-bar progress-bar-warning progress-bar-striped" 
-                                             role="progressbar" 
-                                             aria-valuenow="#{disciplina.porcentagemFaltasOcorridas}" 
-                                             aria-valuemin="0" 
-                                             aria-valuemax="100" 
-                                             style="width: #{disciplina.porcentagemFaltasOcorridas}%"
-                                             title="#{disciplina.porcentagemFaltasOcorridas}%"/>
-                                    </h:panelGroup>
-                                    <h:panelGroup rendered="#{disciplina.situacaoFrequenciaGrave}" >
-                                        <div class="progress-bar progress-bar-danger progress-bar-striped" 
-                                             role="progressbar" 
-                                             aria-valuenow="#{disciplina.porcentagemFaltasOcorridas}" 
-                                             aria-valuemin="0" 
-                                             aria-valuemax="100" 
-                                             style="width: #{disciplina.porcentagemFaltasOcorridas}%" 
-                                             title="#{disciplina.porcentagemFaltasOcorridas}%"/>
-                                    </h:panelGroup>
-                                </div>    
+                                <a data-toggle="modal" href="#{'#atualizar'}#{status.index}" data-placement="top" title="Situação = #{disciplina.situacaoFrequenciaAluno}">
+                                    <div class="progress">
+                                        <h:panelGroup rendered="#{disciplina.situacaoFrequenciaNormal}" >
+                                            <div class="progress-bar progress-bar-success progress-bar-striped" 
+                                                 role="progressbar" 
+                                                 aria-valuenow="#{disciplina.porcentagemFaltasOcorridas}" 
+                                                 aria-valuemin="0" 
+                                                 aria-valuemax="100" 
+                                                 style="width: #{disciplina.porcentagemFaltasOcorridas}%"/>
+                                        </h:panelGroup>
+                                        <h:panelGroup rendered="#{disciplina.situacaoFrequenciaAlerta}" >
+                                            <div class="progress-bar progress-bar-warning progress-bar-striped" 
+                                                 role="progressbar" 
+                                                 aria-valuenow="#{disciplina.porcentagemFaltasOcorridas}" 
+                                                 aria-valuemin="0" 
+                                                 aria-valuemax="100" 
+                                                 style="width: #{disciplina.porcentagemFaltasOcorridas}%"/>
+                                        </h:panelGroup>
+                                        <h:panelGroup rendered="#{disciplina.situacaoFrequenciaGrave}" >
+                                            <div class="progress-bar progress-bar-danger progress-bar-striped" 
+                                                 role="progressbar" 
+                                                 aria-valuenow="#{disciplina.porcentagemFaltasOcorridas}" 
+                                                 aria-valuemin="0" 
+                                                 aria-valuemax="100" 
+                                                 style="width: #{disciplina.porcentagemFaltasOcorridas}%"/>
+                                        </h:panelGroup>
+                                    </div>    
+                                </a>
                             </td>
                             <td>
-                                <a data-toggle="modal" href="#{'#atualizar'}#{status.index}" data-placement="top" title="Atualizar notas e frequência">
-                                    <span class="glyphicon glyphicon-edit"></span>
-                                </a>
-                                #{' '}
                                 <a data-toggle="modal" href="#{'#remover'}#{status.index}" data-placement="top" title="Remover disciplina">
                                     <span class="glyphicon glyphicon-trash"></span>
                                 </a>
@@ -107,27 +101,23 @@
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"></span></button>
-                                        <h4 class="modal-title" id="myModalLabel">Visualizar disciplina: <b>#{disciplina.nome}</b></h4>
+                                        <h4 class="modal-title" id="myModalLabel"><b>#{disciplina.nome} - #{disciplina.professor}</b></h4>
                                     </div>
                                     <div class="modal-body">
-                                        <ul class="list-group">
-                                            <li class="list-group-item">
-                                                <b><h:outputText value="Professor: "/></b>
-                                                <h:outputText value="#{disciplina.professor}"/>
-                                            </li>
-                                            <li class="list-group-item">
-                                                <b><h:outputText value="Nota mínima para ser aprovado: "/></b>
-                                                <h:outputText value="#{disciplina.notaMinimaParaAprovacao}"/>
-                                            </li>
-                                            <li class="list-group-item">
-                                                <b><h:outputText value="Pontos obtidos/Pontos distribuídos: "/></b>
-                                                <h:outputText value="#{disciplina.pontosObtidos}/#{disciplina.pontosDistribuidos}"/>
-                                            </li>
-                                            <li class="list-group-item">
-                                                <b><h:outputText value="Faltas ocorridas/Faltas permitidas: "/></b>
-                                                <h:outputText value="#{disciplina.faltasOcorridas}/#{disciplina.faltasPermitidas}"/>
-                                            </li>
-                                        </ul>
+                                        <p>
+                                            <b><h:outputText value="Nota mínima para ser aprovado: "/></b>
+                                            <h:outputText value="#{disciplina.notaMinimaParaAprovacao}"/>
+                                        </p>
+                                        <p>
+                                            <b><h:outputText value="Pontos obtidos/Pontos distribuídos: "/></b>
+                                            <h:outputText value="#{disciplina.pontosObtidos}/#{disciplina.pontosDistribuidos}"/>
+                                            <h:outputText value=": #{disciplina.situacaoNotaAluno}"/>                                           
+                                        </p>
+                                        <p>
+                                            <b><h:outputText value="Faltas ocorridas/Faltas permitidas: "/></b>
+                                            <h:outputText value="#{disciplina.faltasOcorridas}/#{disciplina.faltasPermitidas}"/>
+                                            <h:outputText value=": #{disciplina.situacaoFrequenciaAluno}"/>
+                                        </p>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">Sair</button>

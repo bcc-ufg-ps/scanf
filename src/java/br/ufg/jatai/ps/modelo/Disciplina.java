@@ -19,7 +19,6 @@ import javax.persistence.TemporalType;
 public class Disciplina implements Serializable {
 
     public static enum Situacao {
-
         NORMAL, ALERTA, GRAVE
     }
     public static final double NOTA_MAXIMA = 10.0;
@@ -91,6 +90,16 @@ public class Disciplina implements Serializable {
             return Situacao.ALERTA;
         }
         return Situacao.GRAVE;
+    }
+    
+    public Situacao getSituacaoNotaAluno() {
+        double ppn = getPorcentagemPontosNecessarios();
+        return getSituacao(ppn);
+    }
+
+    public Situacao getSituacaoFrequenciaAluno() {
+        double pfo = getPorcentagemFaltasOcorridas();
+        return getSituacao(pfo);
     }
 
     public boolean getSituacaoNotaGrave() {

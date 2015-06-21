@@ -22,6 +22,7 @@
                     <ui:param name="disciplinas" value="#{bdisciplina.disciplinas}"/>
                 </ui:include>
                 <h:outputText value="Não há disciplinas cadastradas até o momento!" rendered="#{empty bdisciplina.disciplinas}"/>
+                <b><h:outputText value="Clique nas barras de progresso para atualizar as notas e a frequência da disciplina." rendered="#{not empty bdisciplina.disciplinas}"/></b>
             </b:panel>
         </b:container>
 
