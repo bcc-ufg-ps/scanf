@@ -54,7 +54,7 @@ public class DisciplinaBean {
             Mensagens.adicionarMensagem(
                     FacesMessage.SEVERITY_ERROR, 
                     "Não foi possível recuperar a lista de disciplinas. Por favor, entre em contato com o administrador do sistema.");
-            return new ArrayList<>();
+            return new ArrayList<Disciplina>();
         }
         return dDAO.obterDisciplinasPorAluno(alunoSessao);
     }
