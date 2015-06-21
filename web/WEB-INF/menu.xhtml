@@ -39,11 +39,23 @@
                     <ul class="nav navbar-nav navbar-right">
                         <h:panelGroup rendered="#{baluno.estahLogado()}">
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">#{baluno.alunoSessao.nome}<span class="caret"></span></a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <span class="glyphicon glyphicon-user"></span>
+                                    #{baluno.alunoSessao.nome}
+                                    <span class="caret"></span>
+                                </a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="./minhasDisciplinas.xhtml">Minhas disciplinas</a></li>
+                                    <li>
+                                        <a href="./minhasDisciplinas.xhtml">
+                                            <span class="glyphicon glyphicon-list-alt"></span>
+                                            Minhas disciplinas
+                                        </a>
+                                    </li>
                                     <li role="separator" class="divider"></li>
-                                    <li><h:commandLink action="#{baluno.sair}">Sair</h:commandLink></li>
+                                    <li><h:commandLink action="#{baluno.sair}">
+                                            <span class="glyphicon glyphicon-off"></span>
+                                            Sair
+                                        </h:commandLink></li>
                                 </ul>
                             </li>
                         </h:panelGroup>
