@@ -74,9 +74,9 @@ public class Disciplina implements Serializable {
 
     public double getPorcentagemPontosNecessarios() {
         if (NOTA_MAXIMA - pontosDistribuidos == 0) {
-            return ((pontosObtidos / 10) * 100);
+            return ((pontosObtidos / NOTA_MAXIMA) * 100);
         }
-        if (notaMinimaParaAprovacao - pontosObtidos > NOTA_MAXIMA - pontosObtidos) {
+        if ((notaMinimaParaAprovacao - pontosObtidos) > (NOTA_MAXIMA - pontosDistribuidos)) {
             return 100;
         }
         return (((notaMinimaParaAprovacao - pontosObtidos) / (NOTA_MAXIMA - pontosDistribuidos)) * 100);
