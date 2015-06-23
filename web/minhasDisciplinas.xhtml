@@ -17,7 +17,7 @@
                         Nova disciplina
                     </button>
                 </f:facet>
-                <ui:include src="/WEB-INF/mensagens.xhtml"/>                
+                <ui:include src="/WEB-INF/mensagens.xhtml"/>
                 <ui:include src="/WEB-INF/listaDisciplinas.xhtml" rendered="#{not empty bdisciplina.disciplinas}">
                     <ui:param name="disciplinas" value="#{bdisciplina.disciplinas}"/>
                 </ui:include>
