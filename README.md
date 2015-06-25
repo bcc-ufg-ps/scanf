@@ -14,6 +14,7 @@ Este foi um projeto desenvolvido como estudo de caso da disciplina Projeto de So
 
 ***
 **Versionamento**: 
+
 Versão 1.0:
 * Cadastro de alunos;
 * Login/Logoff;
@@ -25,6 +26,8 @@ Versão 1.0:
 * Vídeo explicativo;
 * Botão para avaliação do software
 
+Versão 1.1:
+* Apresenta a data/hora da última atualização da nota/frequência de uma disciplina;
 
 
 
