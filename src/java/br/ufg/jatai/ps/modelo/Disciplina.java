@@ -15,7 +15,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@NamedQuery(name = Disciplina.OBTER_DISCIPLINAS_POR_ALUNO, query = "select d from Disciplina d where d.aluno.id = :idAluno order by d.dataCadastramento desc")
+@NamedQuery(name = Disciplina.OBTER_DISCIPLINAS_POR_ALUNO, query = "select d from Disciplina d where d.aluno.id = :idAluno order by d.dataUltimaAtualizacao desc")
 public class Disciplina implements Serializable {
 
     public static enum Situacao {
@@ -44,8 +44,8 @@ public class Disciplina implements Serializable {
     private double pontosObtidos;
     @Column(nullable = false)
     private double pontosDistribuidos;
-    @Temporal(TemporalType.DATE)
-    private Date dataCadastramento;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dataUltimaAtualizacao;
     @ManyToOne
     private Aluno aluno;
 
@@ -58,7 +58,7 @@ public class Disciplina implements Serializable {
         this.faltasOcorridas = 0;
         this.pontosDistribuidos = 0.0;
         this.pontosObtidos = 0.0;
-        this.dataCadastramento = Calendar.getInstance().getTime();
+        this.dataUltimaAtualizacao = Calendar.getInstance().getTime();
         this.aluno = new Aluno();
     }
 
@@ -190,12 +190,12 @@ public class Disciplina implements Serializable {
         this.pontosDistribuidos = pontosDistribuidos;
     }
 
-    public Date getDataCadastramento() {
-        return dataCadastramento;
+    public Date getDataUltimaAtualizacao() {
+        return dataUltimaAtualizacao;
     }
 
-    public void setDataCadastramento(Date dataCadastramento) {
-        this.dataCadastramento = dataCadastramento;
+    public void setDataUltimaAtualizacao(Date dataUltimaAtualizacao) {
+        this.dataUltimaAtualizacao = dataUltimaAtualizacao;
     }
 
     public Aluno getAluno() {

@@ -102,6 +102,12 @@
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"></span></button>
                                         <h4 class="modal-title" id="myModalLabel"><b>#{disciplina.nome} - #{disciplina.professor}</b></h4>
+                                        <p>
+                                            <b><h:outputText value="Última atualização: "/></b>
+                                            <h:outputText value="#{disciplina.dataUltimaAtualizacao}">
+                                                <f:convertDateTime locale="pt_BR" timeZone="GMT-3" dateStyle="long" pattern="dd/MM/yyyy HH:mm"/>
+                                            </h:outputText>
+                                        </p>
                                     </div>
                                     <div class="modal-body">
                                         <p>

@@ -13,6 +13,7 @@ import br.ufg.jatai.ps.modelo.Disciplina;
 import br.ufg.jatai.ps.util.Mensagens;
 import br.ufg.jatai.ps.util.Sessao;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -25,6 +26,7 @@ public class DisciplinaBean {
     private Disciplina disciplina = new Disciplina();
     
     public String atualizarDisciplina(Disciplina disciplina) {
+        disciplina.setDataUltimaAtualizacao(Calendar.getInstance().getTime());
         dDAO.atualizar(disciplina);
         return "minhasDisciplinas?faces-redirect=true";
     }    
