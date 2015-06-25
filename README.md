@@ -7,6 +7,7 @@ SCANF (Sistema para Controle Acadêmico de Notas e Frequências) tem como objeti
 Este foi um projeto desenvolvido como estudo de caso da disciplina Projeto de Software - 2015/1, do curso [Bacharelado em Ciência da Computação](http://computacao.jatai.ufg.br/) da [Universidade Federal de Goiás/Regional Jataí](http://jatai.ufg.br/).
 
 ***
-Para mais detalhes sobre o funcionamento do SCANF, assista o vídeo: https://www.youtube.com/watch?v=Q32BAX1n7aE.
-Caso tenha interesse em utilizar o sistema, acesse: http://projetodesoftware-ufgjatai.rhcloud.com/scanf/.
-Após utilizá-lo, avalie-o para que possamos aprimorá-lo cada vez mais. Para isso acesse: http://goo.gl/VeJYtY. 
+**Recursos**: 
+* Para mais detalhes sobre o funcionamento do SCANF, assista o vídeo: https://www.youtube.com/watch?v=Q32BAX1n7aE.
+* Caso tenha interesse em utilizar o sistema, acesse: http://projetodesoftware-ufgjatai.rhcloud.com/scanf/.
+* Após utilizá-lo, avalie-o para que possamos aprimorá-lo cada vez mais. Para isso acesse: http://goo.gl/VeJYtY. 
