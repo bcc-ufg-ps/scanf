@@ -11,3 +11,20 @@ Este foi um projeto desenvolvido como estudo de caso da disciplina Projeto de So
 * Para mais detalhes sobre o funcionamento do SCANF, assista o vídeo: https://www.youtube.com/watch?v=Q32BAX1n7aE.
 * Caso tenha interesse em utilizar o sistema, acesse: http://projetodesoftware-ufgjatai.rhcloud.com/scanf/.
 * Após utilizá-lo, avalie-o para que possamos aprimorá-lo cada vez mais. Para isso acesse: http://goo.gl/VeJYtY. 
+
+***
+**Versionamento**: 
+Versão 1.0:
+* Cadastro de alunos;
+* Login/Logoff;
+* Cadastro de disciplinas;
+* Atualização de notas e frequência das disciplinas;
+* Listagem de todas as disciplinas cadastradas;
+* Visualização de dados adicionais de cada disciplina;
+* Função "Saiba mais...";
+* Vídeo explicativo;
+* Botão para avaliação do software
+
+
+
+
