@@ -111,11 +111,15 @@
                                     <div class="modal-body">
                                         <p>
                                             <b><h:outputText value="Nota mínima para ser aprovado: "/></b>
-                                            <h:outputText value="#{disciplina.notaMinimaParaAprovacao}"/>
+                                            <h:outputText value="#{disciplina.notaMinimaParaAprovacao}">
+                                                <f:convertNumber pattern="#0.00" minFractionDigits="2"/>
+                                            </h:outputText>
                                         </p>
                                         <p>
                                             <b><h:outputText value="Pontos obtidos/Pontos distribuídos: "/></b>
-                                            <h:outputText value="#{disciplina.pontosObtidos}/#{disciplina.pontosDistribuidos}"/>
+                                            <h:outputText value="#{disciplina.pontosObtidos}/#{disciplina.pontosDistribuidos}">
+                                                <f:convertNumber pattern="#0.00" minFractionDigits="2"/>
+                                            </h:outputText>
                                         </p>
                                         <p>
                                             <b><h:outputText value="Rendimento necessário para ser aprovado: "/></b>
@@ -166,7 +170,7 @@
                                                              required="true" 
                                                              requiredMessage="O campo 'Pontos distribuídos' é obrigatório!"
                                                              validatorMessage="O valor do campo 'Pontos distribuídos' deve estar no intervalo 0.0 à 10.0!">
-                                                    <f:convertNumber pattern="#0.00"/>
+                                                    <f:convertNumber pattern="#0.00" minFractionDigits="2"/>
                                                     <f:validateDoubleRange minimum="0.0" maximum="10.0"/>
                                                 </b:inputText>
                                             </b:column>
@@ -179,7 +183,7 @@
                                                              required="true" 
                                                              requiredMessage="O campo 'Pontos obtidos' é obrigatório!"
                                                              validatorMessage="O valor do campo 'Pontos obtidos' deve estar no intervalo 0.0 à 10.0!">
-                                                    <f:convertNumber pattern="#0.00"/>
+                                                    <f:convertNumber pattern="#0.00" minFractionDigits="2"/>
                                                     <f:validateDoubleRange minimum="0.0" maximum="10.0"/>
                                                 </b:inputText>
                                             </b:column>
