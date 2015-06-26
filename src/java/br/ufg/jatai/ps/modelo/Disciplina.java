@@ -1,24 +1,28 @@
 package br.ufg.jatai.ps.modelo;
 
+import br.ufg.jatai.ps.util.Mensagens;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import javax.persistence.CascadeType;
+import java.util.List;
+import javafx.scene.paint.Color;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 @Entity
 @NamedQuery(name = Disciplina.OBTER_DISCIPLINAS_POR_ALUNO, query = "select d from Disciplina d where d.aluno.id = :idAluno order by d.nome asc")
-public class Disciplina implements Serializable {
+public class Disciplina implements Serializable, Observado {
 
     public static enum Situacao {
+
         NORMAL, ALERTA, GRAVE
     }
     public static final double NOTA_MAXIMA = 10.0;
@@ -48,6 +52,12 @@ public class Disciplina implements Serializable {
     private Date dataUltimaAtualizacao;
     @ManyToOne
     private Aluno aluno;
+    @Transient
+    private List<String> mensagensAlerta;
+    @Transient
+    private List<String> mensagensApoio;
+    @Transient
+    private List<Observador> observadores;
 
     public Disciplina() {
         this.id = null;
@@ -60,6 +70,29 @@ public class Disciplina implements Serializable {
         this.pontosObtidos = 0.0;
         this.dataUltimaAtualizacao = Calendar.getInstance().getTime();
         this.aluno = new Aluno();
+        this.mensagensAlerta = new ArrayList<String>();
+        this.mensagensApoio = new ArrayList<String>();
+        this.observadores = new ArrayList<Observador>();
+    }
+
+    @Override
+    public void adicionarObservador(Observador o) {
+        this.observadores.add(o);
+    }
+
+    @Override
+    public void notificar() {
+        for (Observador o : observadores) {
+            o.atualizar(this);
+        }
+    }
+
+    public void adicionarMensagemAlerta(String msg) {
+        this.mensagensAlerta.add(msg);
+    }
+
+    public void adicionarMensagemApoio(String msg) {
+        this.mensagensApoio.add(msg);
     }
 
     public double getPorcentagemFaltasOcorridas() {
@@ -91,7 +124,7 @@ public class Disciplina implements Serializable {
         }
         return Situacao.GRAVE;
     }
-    
+
     public Situacao getSituacaoNotaAluno() {
         double ppn = getPorcentagemPontosNecessarios();
         return getSituacao(ppn);
@@ -204,6 +237,30 @@ public class Disciplina implements Serializable {
 
     public void setAluno(Aluno aluno) {
         this.aluno = aluno;
+    }
+
+    public List<String> getMensagensAlerta() {
+        return mensagensAlerta;
+    }
+
+    public void setMensagensAlerta(List<String> mensagensAlerta) {
+        this.mensagensAlerta = mensagensAlerta;
+    }
+
+    public List<String> getMensagensApoio() {
+        return mensagensApoio;
+    }
+
+    public void setMensagensApoio(List<String> mensagensApoio) {
+        this.mensagensApoio = mensagensApoio;
+    }
+
+    public List<Observador> getObservadores() {
+        return observadores;
+    }
+
+    public void setObservadores(List<Observador> observadores) {
+        this.observadores = observadores;
     }
 
     @Override
