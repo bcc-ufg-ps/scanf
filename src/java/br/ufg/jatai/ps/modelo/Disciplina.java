@@ -15,7 +15,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@NamedQuery(name = Disciplina.OBTER_DISCIPLINAS_POR_ALUNO, query = "select d from Disciplina d where d.aluno.id = :idAluno order by d.dataUltimaAtualizacao desc")
+@NamedQuery(name = Disciplina.OBTER_DISCIPLINAS_POR_ALUNO, query = "select d from Disciplina d where d.aluno.id = :idAluno order by d.nome asc")
 public class Disciplina implements Serializable {
 
     public static enum Situacao {
