@@ -26,6 +26,13 @@ public class DisciplinaBean {
     private Disciplina disciplina = new Disciplina();
 
     public String atualizarDisciplina(Disciplina disciplina) {
+        if (disciplina.getPontosObtidos() > disciplina.getPontosDistribuidos()) {
+            Mensagens.adicionarMensagem(
+                    FacesMessage.SEVERITY_ERROR,
+                    "A quantidade de pontos obtidos não pode ser maior do que a quantidade de pontos distribuídos.",
+                    null);
+            return null;
+        }
         disciplina.setDataUltimaAtualizacao(Calendar.getInstance().getTime());
         dDAO.atualizar(disciplina);
         return "minhasDisciplinas?faces-redirect=true";
