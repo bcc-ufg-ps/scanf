@@ -164,7 +164,9 @@
                                                 <b:inputText placeholder="Informe a quantidade de pontos distribuídos" 
                                                              value="#{disciplina.pontosDistribuidos}" 
                                                              required="true" 
-                                                             requiredMessage="O campo 'Pontos distribuídos' é obrigatório!"/>
+                                                             requiredMessage="O campo 'Pontos distribuídos' é obrigatório!">
+                                                    <f:convertNumber pattern="#0.00"/>
+                                                </b:inputText>
                                             </b:column>
                                         </b:row>
                                         <b:row styleClass="show-grid">
@@ -173,7 +175,9 @@
                                                 <b:inputText placeholder="Informe a quantidade de pontos obtidos" 
                                                              value="#{disciplina.pontosObtidos}" 
                                                              required="true" 
-                                                             requiredMessage="O campo 'Pontos obtidos' é obrigatório!"/>
+                                                             requiredMessage="O campo 'Pontos obtidos' é obrigatório!">
+                                                    <f:convertNumber pattern="#0.00"/>
+                                                </b:inputText>
                                             </b:column>
                                         </b:row>
                                         <b:row styleClass="show-grid">

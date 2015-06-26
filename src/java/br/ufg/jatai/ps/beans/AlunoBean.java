@@ -33,13 +33,15 @@ public class AlunoBean {
         if (!confirmarSenha.equals(aluno.getSenha())) {
             Mensagens.adicionarMensagem(
                     FacesMessage.SEVERITY_ERROR,
-                    "As senhas informadas não conferem!");
+                    "As senhas informadas não conferem!",
+                    null);
             return null;
         }
         if (aDAO.existeAlunoComEmail(aluno.getEmail())) {
             Mensagens.adicionarMensagem(
                     FacesMessage.SEVERITY_ERROR,
-                    "Usuário já cadastrado com esse email!");
+                    "Usuário já cadastrado com esse email!",
+                    null);
             return null;
         }
         aDAO.salvar(aluno);
@@ -51,7 +53,8 @@ public class AlunoBean {
         if (!aDAO.existeAlunoComEmail(alunoSessao.getEmail())) {
             Mensagens.adicionarMensagem(
                     FacesMessage.SEVERITY_ERROR,
-                    "Não foi possível atualizar o perfil do usuário! Por favor, entre em contato com o administrador do sistema.");
+                    "Não foi possível atualizar o perfil do usuário! Por favor, entre em contato com o administrador do sistema.",
+                    null);
             return null;
         }
         aDAO.salvar(alunoSessao);
@@ -64,7 +67,8 @@ public class AlunoBean {
         if (alunoSessao == null) {
             Mensagens.adicionarMensagem(
                     FacesMessage.SEVERITY_ERROR,
-                    "Email ou senha inválidos!");
+                    "Email ou senha inválidos!",
+                    null);
             return null;
         }
         return "minhasDisciplinas.xhtml?faces-redirect=true";

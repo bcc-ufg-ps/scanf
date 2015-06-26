@@ -5,6 +5,10 @@
  */
 package br.ufg.jatai.ps.modelo;
 
+import br.ufg.jatai.ps.beans.DisciplinaBean;
+import br.ufg.jatai.ps.util.Mensagens;
+import javax.faces.application.FacesMessage;
+
 /**
  *
  * @author Paulo
@@ -13,14 +17,19 @@ public class ObservadorFrequencia implements Observador {
 
     @Override
     public void atualizar(Observado o) {
-        Disciplina d = (Disciplina) o;
+        DisciplinaBean bdisciplina = (DisciplinaBean) o;
+        Disciplina d = bdisciplina.getDisciplina();
         int faltasPermitidas = d.getFaltasPermitidas() - d.getFaltasOcorridas();
         if (faltasPermitidas == 1) {
-            d.adicionarMensagemAlerta("Atenção, você pode faltar apenas mais uma vez nesta disciplina!");
-        } 
+            Mensagens.adicionarMensagem(FacesMessage.SEVERITY_ERROR, 
+                    "Atenção, você pode faltar apenas mais uma vez nesta disciplina!", 
+                    "" + d.getId());
+        }
         if (faltasPermitidas == 0) {
-            d.adicionarMensagemAlerta("Atenção, você não pode faltar mais nesta disciplina!");
-        } 
+            Mensagens.adicionarMensagem(FacesMessage.SEVERITY_ERROR, 
+                    "Atenção, você não pode faltar mais nesta disciplina!", 
+                    "" + d.getId());
+        }
     }
-    
+
 }

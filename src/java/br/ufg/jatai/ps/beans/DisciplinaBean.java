@@ -24,38 +24,40 @@ public class DisciplinaBean {
     private final DisciplinaDAO dDAO = (new FabricaDAOJPA()).obterDisciplinaDAO();
     private final AlunoDAO aDAO = (new FabricaDAOJPA()).obterAlunoDAO();
     private Disciplina disciplina = new Disciplina();
-    
+
     public String atualizarDisciplina(Disciplina disciplina) {
         disciplina.setDataUltimaAtualizacao(Calendar.getInstance().getTime());
         dDAO.atualizar(disciplina);
         return "minhasDisciplinas?faces-redirect=true";
-    }    
+    }
 
     public String removerDisciplina(Disciplina disciplina) {
         dDAO.remover(disciplina);
         return "minhasDisciplinas?faces-redirect=true";
-    }    
-    
+    }
+
     public String cadastrarDisciplina() {
-        Aluno alunoSessao = Sessao.obterAlunoSessao();        
+        Aluno alunoSessao = Sessao.obterAlunoSessao();
         if (alunoSessao == null) {
             Mensagens.adicionarMensagem(
-                    FacesMessage.SEVERITY_ERROR, 
-                    "Não foi possível cadastrar esse disciplina. Por favor, entre em contato com o administrador do sistema.");
+                    FacesMessage.SEVERITY_ERROR,
+                    "Não foi possível cadastrar esse disciplina. Por favor, entre em contato com o administrador do sistema.",
+                    null);
             return null;
         }
         disciplina.setAluno(alunoSessao);
         dDAO.salvar(disciplina);
         disciplina = new Disciplina();
         return "minhasDisciplinas?faces-redirect=true";
-    }    
+    }
 
     public List<Disciplina> getDisciplinas() {
-        Aluno alunoSessao = Sessao.obterAlunoSessao();        
+        Aluno alunoSessao = Sessao.obterAlunoSessao();
         if (alunoSessao == null) {
             Mensagens.adicionarMensagem(
-                    FacesMessage.SEVERITY_ERROR, 
-                    "Não foi possível recuperar a lista de disciplinas. Por favor, entre em contato com o administrador do sistema.");
+                    FacesMessage.SEVERITY_ERROR,
+                    "Não foi possível recuperar a lista de disciplinas. Por favor, entre em contato com o administrador do sistema.",
+                    null);
             return new ArrayList<Disciplina>();
         }
         return dDAO.obterDisciplinasPorAluno(alunoSessao);
@@ -67,5 +69,5 @@ public class DisciplinaBean {
 
     public void setDisciplina(Disciplina disciplina) {
         this.disciplina = disciplina;
-    }    
+    }
 }

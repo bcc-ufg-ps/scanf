@@ -69,7 +69,9 @@
                                     <b:inputText placeholder="Informe a nota mínima para ser aprovado" 
                                                  value="#{bdisciplina.disciplina.notaMinimaParaAprovacao}" 
                                                  required="true" 
-                                                 requiredMessage="O campo 'Nota mínima' é obrigatório!"/>
+                                                 requiredMessage="O campo 'Nota mínima' é obrigatório!">
+                                        <f:convertNumber pattern="#0.00"/>
+                                    </b:inputText>
                                 </b:column>
                             </b:row>
                             <b:row styleClass="show-grid">

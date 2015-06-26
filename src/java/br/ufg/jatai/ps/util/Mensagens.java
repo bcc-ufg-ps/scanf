@@ -14,8 +14,8 @@ import javax.faces.context.FacesContext;
  * @author Paulo
  */
 public class Mensagens {
-    public static void adicionarMensagem(Severity sev, String msg) {
+    public static void adicionarMensagem(Severity sev, String msg, String componente) {
         FacesMessage fm = new FacesMessage(sev, msg, msg);
-        FacesContext.getCurrentInstance().addMessage(null, fm);
+        FacesContext.getCurrentInstance().addMessage(componente, fm);
     }
 }
