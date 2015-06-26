@@ -13,7 +13,8 @@ public class AlunoDAOJPA implements AlunoDAO {
         EntityManager em = JPAUtil.obterConexao();
         try {
             em.getTransaction().begin();
-            em.persist(aluno);
+            if (aluno.getId() == null) em.persist(aluno);
+            else em.merge(aluno);
             em.getTransaction().commit();
         } finally {
             em.close();

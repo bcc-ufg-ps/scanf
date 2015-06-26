@@ -47,6 +47,17 @@ public class AlunoBean {
         return "login.xhtml?faces-redirect=true";
     }
 
+    public String atualizarPerfil() {
+        if (!aDAO.existeAlunoComEmail(alunoSessao.getEmail())) {
+            Mensagens.adicionarMensagem(
+                    FacesMessage.SEVERITY_ERROR,
+                    "Não foi possível atualizar o perfil do usuário! Por favor, entre em contato com o administrador do sistema.");
+            return null;
+        }
+        aDAO.salvar(alunoSessao);
+        return "minhasDisciplinas.xhtml?faces-redirect=true";
+    }
+
     public String autenticar() {
         alunoSessao = aDAO.obterAlunoPorEmailESenha(aluno.getEmail(), aluno.getSenha());
         aluno = new Aluno();

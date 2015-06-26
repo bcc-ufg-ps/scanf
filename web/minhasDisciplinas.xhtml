@@ -85,7 +85,39 @@
                     </div>
                 </div>
             </div>          
+        </h:form>
 
+        <h:form>
+            <!-- Modal perfil do usuário -->
+            <div class="modal fade" id="atualizarPerfil" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"></span></button>
+                            <h4 class="modal-title" id="myModalLabel">Atualizar perfil de: <b>#{baluno.alunoSessao.nome}</b></h4>
+                        </div>
+                        <div class="modal-body">
+                            <b:row styleClass="show-grid">
+                                <b:column span="12" styleClass="show-grid">
+                                    <h:outputLabel value="Nome *"/>
+                                    <b:inputText placeholder="Informe seu nome" 
+                                                 value="#{baluno.alunoSessao.nome}" 
+                                                 required="true" 
+                                                 requiredMessage="O campo 'Nome' é obrigatório!"/>
+                                </b:column>
+                            </b:row>
+                            <b:row styleClass="show-grid">
+                                <b:column span="12" styleClass="show-grid">
+                                    <b><h:outputText value="* Campos de preenchimento obrigatório."/></b>                                   </b:column>
+                            </b:row>
+                        </div>
+                        <div class="modal-footer">
+                            <b:commandButton value="Salvar" look="primary" icon="ok" action="#{baluno.atualizarPerfil}"/>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Sair</button>
+                        </div>
+                    </div>
+                </div>
+            </div>         
 
         </h:form>
     </ui:define>

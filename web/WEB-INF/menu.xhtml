@@ -13,10 +13,18 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.xhtml">
-                        <span class="glyphicon glyphicon-education"></span>
-                        SCANF
-                    </a>
+                    <h:panelGroup rendered="#{not baluno.estahLogado()}">
+                        <a class="navbar-brand" href="index.xhtml">
+                            <span class="glyphicon glyphicon-education"></span>
+                            SCANF
+                        </a>
+                    </h:panelGroup>
+                    <h:panelGroup rendered="#{baluno.estahLogado()}">
+                        <a class="navbar-brand" href="minhasDisciplinas.xhtml">
+                            <span class="glyphicon glyphicon-education"></span>
+                            SCANF
+                        </a>
+                    </h:panelGroup>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-form navbar-right">
@@ -49,6 +57,12 @@
                                         <a href="./minhasDisciplinas.xhtml">
                                             <span class="glyphicon glyphicon-list-alt"></span>
                                             Minhas disciplinas
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a data-toggle="modal" href="#atualizarPerfil" data-placement="top">
+                                            <span class="glyphicon glyphicon-edit"></span>
+                                            Alterar Perfil
                                         </a>
                                     </li>
                                     <li>
