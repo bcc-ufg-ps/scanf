@@ -30,7 +30,8 @@
                     <ul class="nav navbar-form navbar-right">
                         <h:panelGroup rendered="#{not baluno.estahLogado()}">
                             <div class="form-group">
-                                <b:inputText value="#{baluno.aluno.email}" 
+                                <b:inputText type="email" placeholder="seu_email@exemplo.com" 
+                                             value="#{baluno.aluno.email}" 
                                              required="true" 
                                              requiredMessage="O campo 'Email' é obrigatório!"/>
                             </div>
